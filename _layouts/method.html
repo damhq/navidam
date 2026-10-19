@@ -55,7 +55,7 @@ layout: default
         <a class="label consensus-status-{{ consensus.status }}" href="#assessment-breakdown" title="{{ consensus.agreeing }} of {{ consensus.evaluated }} criteria reach &ge; 80% agreement; Consensus requires at least 80% of compared criteria">{{ consensus.status | capitalize }} ({{ consensus.assessors }} assessors)</a>
       {% endif %}
     {% elsif meta.confidence != "" %}
-      <span class="label confidence-score-{{ meta.confidence | slugify }}">Confidence score: {{ meta.confidence }}</span>
+      <span class="label confidence-score-{{ meta.confidence | slugify }}">Single assessment · confidence {{ meta.confidence }}/5</span>
     {% endif %}
   </p>
   {% if meta.ai_flag != "" %}

@@ -26,14 +26,14 @@ Behavior:
   assessor found in the votes.
 - Every issue is also stored as a vote in _data/assessment_votes/ (see
   assessment_consensus.py), from which the Consensus / Debated / confidence
-  status badge of the method page is computed. The first revision of a
-  pre-existing assessment seeds a baseline vote from that assessment.
+  status badge of the method page is computed. A named assessor has one vote
+  per method: a later assessment replaces their earlier vote, including a
+  baseline vote seeded from a pre-existing assessment.
 - generate_method_pages.py is only ever called to fill in *missing* pages
   (it already skips a method's file if it exists), so an existing
   documentation page is never overwritten by this script.
 """
 import csv
-import hashlib
 import json
 import os
 import subprocess
@@ -198,13 +198,7 @@ def issue_answers(fields):
 
 
 def author_key(name):
-    """Stable key of an author name (case/space-insensitive), so an anonymous
-    contribution can still replace the same author's earlier assessment
-    without storing the name."""
-    normalized = " ".join((name or "").casefold().split())
-    if normalized in ANONYMOUS_NAMES:
-        return None
-    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
+    return consensus.author_key(name)
 
 
 def build_vote(fields):
@@ -237,13 +231,15 @@ ANONYMOUS_NAMES = {"", "anonymous", "unknown"}
 
 
 def vote_key(vote):
-    return vote.get("author_key") or author_key(vote.get("assessor"))
+    return consensus.vote_author_key(vote)
 
 
 def upsert_vote(votes, vote):
     """One vote per assessor and method: a new submission replaces the vote from
     the same issue (issue edits) or from the same author (matched on the author
-    key, which also works for anonymous contributions and legacy named votes)."""
+    key, which also works for named legacy votes). Older duplicate votes are
+    reduced to the newest assessment before applying the submission."""
+    votes = consensus.deduplicate_votes(votes)
     key = vote_key(vote)
     for i, existing in enumerate(votes):
         same_issue = vote["issue"] is not None and existing.get("issue") == vote["issue"]
@@ -251,7 +247,7 @@ def upsert_vote(votes, vote):
             votes[i] = vote
             return votes
     votes.append(vote)
-    return votes
+    return consensus.deduplicate_votes(votes)
 
 
 def compute_changes(row, published):

@@ -63,7 +63,7 @@ Several people can assess the same method. Each method page then shows a status 
 | **Consensus** (*k* assessors) | At least **80% of the compared criteria** reach an agreement of at least 80% between assessors (20 of 25 when all criteria are compared). |
 | **Debated** (*k* assessors) | Fewer than 80% of the compared criteria reach that agreement: assessors give contrasting assessments. |
 
-Two assessors are enough to get a Consensus or Debated status. There is no intermediate status. Methods assessed before this system existed show the confidence score of their initial assessment (2/5 for AI-assisted assessments, 3/5 for assessments made by contributors).
+Two assessors are enough to get a Consensus or Debated status. There is no intermediate status. Methods assessed before this system existed also show the **Single assessment** badge, using the confidence score of their initial assessment (2/5 for AI-assisted assessments, 3/5 for assessments made by contributors).
 
 #### How agreement is computed
 

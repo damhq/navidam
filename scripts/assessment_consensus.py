@@ -11,6 +11,10 @@ method into:
 Running this file as a script rebuilds ``_data/assessment_status.json`` (a
 generated, gitignored build artifact read by ``_layouts/method.html``).
 
+Only the newest assessment from each named assessor contributes to consensus.
+This also cleans up duplicate votes from older data; anonymous assessments
+remain independent because their authors cannot be matched.
+
 Agreement of one criterion
 --------------------------
 Each vote i has a softened weight w_i = sqrt(confidence / 5) (sqrt(3 / 5)
@@ -35,6 +39,7 @@ One vote: ``single`` (the confidence score is displayed). Two or more votes:
 an agreement of >= 80%; ``debated`` otherwise. There are 25 criteria, so when
 all are compared, 20 agreed criteria meet the threshold.
 """
+import hashlib
 import json
 import math
 import re
@@ -130,6 +135,43 @@ def parse_confidence(value):
     except (TypeError, ValueError):
         return None
     return confidence if 1 <= confidence <= MAX_CONFIDENCE else None
+
+
+def author_key(name):
+    """Stable key for a named assessor; anonymous votes cannot be matched."""
+    normalized = " ".join((name or "").casefold().split())
+    if normalized in {"", "anonymous", "unknown"}:
+        return None
+    return hashlib.sha256(normalized.encode("utf-8")).hexdigest()[:16]
+
+
+def vote_author_key(vote):
+    return vote.get("author_key") or author_key(vote.get("assessor"))
+
+
+def deduplicate_votes(votes):
+    """Keep only the newest named assessor vote, preserving anonymous votes."""
+    newest = {}
+    for index, vote in enumerate(votes):
+        key = vote_author_key(vote)
+        if key is None:
+            continue
+        date = str(vote.get("date") or "")
+        try:
+            issue = int(vote.get("issue") or 0)
+        except (TypeError, ValueError):
+            issue = 0
+        # Dates/issues determine which historical assessment is newer; list
+        # order breaks ties and keeps the most recently appended record.
+        rank = (bool(date or issue or not vote.get("baseline")), date, issue, index)
+        if key not in newest or rank > newest[key][0]:
+            newest[key] = (rank, index)
+
+    keep = {entry[1] for entry in newest.values()}
+    return [
+        vote for index, vote in enumerate(votes)
+        if vote_author_key(vote) is None or index in keep
+    ]
 
 
 def weight(vote):
@@ -296,7 +338,7 @@ def load_votes(method_name):
     if not path.exists():
         return []
     with open(path, encoding="utf-8") as f:
-        return json.load(f).get("votes", [])
+        return deduplicate_votes(json.load(f).get("votes", []))
 
 
 def votes_text(method_name, votes):
@@ -305,7 +347,9 @@ def votes_text(method_name, votes):
 
 def save_votes(method_name, votes):
     VOTES_DIR.mkdir(parents=True, exist_ok=True)
-    votes_path(method_name).write_text(votes_text(method_name, votes), encoding="utf-8")
+    votes_path(method_name).write_text(
+        votes_text(method_name, deduplicate_votes(votes)), encoding="utf-8"
+    )
 
 
 def build_status_file(votes_dir=VOTES_DIR, output=STATUS_FILE):
@@ -317,7 +361,7 @@ def build_status_file(votes_dir=VOTES_DIR, output=STATUS_FILE):
             data = json.load(f)
         method = data.get("method")
         if method and data.get("votes"):
-            statuses[method] = method_status(data["votes"])
+            statuses[method] = method_status(deduplicate_votes(data["votes"]))
     with open(output, "w", encoding="utf-8") as f:
         json.dump(statuses, f, ensure_ascii=False, indent=2)
         f.write("\n")
