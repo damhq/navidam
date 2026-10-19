@@ -121,13 +121,32 @@ def test_published_confidence_is_rounded_mean():
 def test_status_file_hides_issue_numbers(tmp_path):
     votes_dir = tmp_path / "votes"
     votes_dir.mkdir()
-    data = {"method": "M", "votes": [dict(vote(3, IID="Required"), issue=12), dict(vote(3, IID="Required"), issue=13)]}
+    data = {"method": "M", "votes": [
+        dict(vote(3, IID="Required"), assessor="A", issue=12),
+        dict(vote(3, IID="Required"), assessor="B", issue=13),
+    ]}
     (votes_dir / "m.json").write_text(json.dumps(data), encoding="utf-8")
     out = tmp_path / "status.json"
     ac.build_status_file(votes_dir, out)
     text = out.read_text(encoding="utf-8")
     assert json.loads(text)["M"]["status"] == "consensus"
     assert "issue" not in text
+
+
+def test_status_uses_only_newest_vote_per_named_assessor(tmp_path):
+    votes_dir = tmp_path / "votes"
+    votes_dir.mkdir()
+    old = dict(vote(2, IID="Required"), assessor="A", baseline=True)
+    new = dict(vote(4, IID="Recommended"), assessor="A", issue=84, date="2026-10-13")
+    (votes_dir / "m.json").write_text(
+        json.dumps({"method": "M", "votes": [old, new]}), encoding="utf-8"
+    )
+    out = tmp_path / "status.json"
+    ac.build_status_file(votes_dir, out)
+    status = json.loads(out.read_text(encoding="utf-8"))["M"]
+    assert status["status"] == "single"
+    assert status["assessors"] == 1
+    assert status["voters"] == [{"name": "A", "confidence": 4}]
 
 
 def test_ordinal_levels_match_issue_template():
@@ -182,6 +201,17 @@ def test_same_author_replaces_previous_vote_even_if_anonymous():
     assert "Marie" not in str(votes)
     votes = upsert_vote(votes, v("Anonymous", "", 7, 3))
     assert len(votes) == 3
+
+
+def test_new_submission_cleans_existing_same_author_duplicates():
+    from process_method_assessment_issue import upsert_vote, author_key
+    old = {"issue": None, "baseline": True, "assessor": "Joaquim Estopinan",
+           "confidence": 3, "answers": {}}
+    prior = {"issue": 84, "date": "2026-10-13", "assessor": "Joaquim Estopinan",
+             "author_key": author_key("Joaquim Estopinan"), "confidence": 4, "answers": {}}
+    replacement = {"issue": 91, "date": "2026-10-19", "assessor": "Joaquim Estopinan",
+                   "author_key": author_key("Joaquim Estopinan"), "confidence": 5, "answers": {}}
+    assert upsert_vote([old, prior], replacement) == [replacement]
 
 
 def test_status_exposes_per_assessor_values():
