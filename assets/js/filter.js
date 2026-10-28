@@ -82,6 +82,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 1. Load method data
   const methodData = JSON.parse(document.getElementById('method-data').textContent);
 
+  const NO_SPECIFIC_CRITERION = "Model specific";
+  const NO_SPECIFIC_VALUE = "No specific assumption";
+
   // 2. Define the criteria you want dropdowns for (column names from your TSV)
   //  Replaced by an import
   
@@ -126,6 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
       optsArr = optsArr.filter(opt => !compositeIncluded.has(opt));
     }
 
+    // Needs-side only: no assumption restriction (methods with empty cells included)
+    if (criterion.key === NO_SPECIFIC_CRITERION) {
+      optsArr = optsArr.filter(opt => opt !== NO_SPECIFIC_VALUE);
+    }
+
     // Custom sort for ordinal criteria
     if (ordinalCriteriaOrder[criterion.key]) {
       const order = ordinalCriteriaOrder[criterion.key];
@@ -133,6 +141,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
       optsArr.sort(); // default alphabetical for non-ordinal
     }
+
+    if (criterion.key === NO_SPECIFIC_CRITERION) optsArr.unshift(NO_SPECIFIC_VALUE);
 
     // Re-add "Any" at the start and "Unsure" at the end
     if (anyOpt !== null) optsArr.unshift(anyOpt);
@@ -573,8 +583,11 @@ document.addEventListener('DOMContentLoaded', function() {
           if (v && v !== "__unsure__") selectedVals = [v];
         }
 
+        // "No specific assumption" means the user imposes no restriction: keep all methods, including empty cells
+        const noRestriction = criterion.key === NO_SPECIFIC_CRITERION && selectedVals.includes(NO_SPECIFIC_VALUE);
+
         // If nothing meaningful selected (Any / Unsure), skip filtering for this criterion
-        if (selectedVals.length === 0) {
+        if (selectedVals.length === 0 || noRestriction) {
           // do nothing (skip criterion)
         } else {
           // 1. Composite option logic (union of constituents for all selected composite opts)
