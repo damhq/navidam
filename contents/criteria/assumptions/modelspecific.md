@@ -14,7 +14,7 @@ categories:
 |:------------------:|----------------------------|
 | `Parallel trends` | Requires that, in the absence of intervention, treated and control groups would follow the same time‐trend in the outcome (critical for DiD and BACI designs). |
 | `Stationarity` | Assumes statistical properties (mean, variance, autocorrelation) remain constant over time, enabling reliable time‐series or panel inference. |
-| `Dispersal, reproduction, mortality` | Ecological rates governing population spread, birth, and death processes must be explicitly specified and realistic in mechanistic models. |
+| `Demographic rates` | Dispersal, reproduction and mortality rates must be explicitly specified and realistic in mechanistic models. |
 | `Instrument validity` | The instrument influences the outcome only through its effect on treatment, with no direct or backdoor pathways. |
 | `Normality of random effects` | Random intercepts or slopes in mixed models are assumed to follow a Gaussian distribution for correct variance‐component estimation. |
 | `No M-O confounding` | In mediation analysis, the mediator–outcome relationship must be free of unmeasured confounders. |
@@ -24,6 +24,9 @@ categories:
 | `B/A treatment obs.` | Assumes a sufficient number of observations both before and after the intervention to establish stable trends. |
 | `Good pretreatment fit` | Validity relies on closely matching pre‐intervention trajectories between treated and control units. |
 | `Time-varying OR site-varying` | Assumes confounding is either time‐invariant and site-specific or time-varying but common to all sites. |
+| `Non-Gaussian noise` | Disturbances must be non-Gaussian, which makes the causal direction identifiable (e.g., LiNGAM). |
+| `Independent noise` | The effect is a restricted function of its cause (e.g., additive) plus noise independent of the cause, which makes the causal direction identifiable. |
+| `Invariance across environments` | The causal mechanism from causes to outcome stays the same across environments or interventions (e.g., invariant causal prediction). |
 
 ## Definition
 Any critical assumption unique to the method’s structure and validity (e.g., parallel trends for DiD, stationarity for time‐series, instrument validity for IV). 
@@ -34,7 +37,7 @@ These distinctive assumptions determine when the method yields valid estimates. 
 ## Tools/rationale for helping assessment
 - `Parallel trends`: Compare pre-disturbance response variable (e.g. RS indices) for treatment vs. control sites to check if this assumption is reasonable. 
 - `Stationarity`: Consider whether your ecological process has stable mean/variance over time.   	  
-- `Dispersal, reproduction, mortality`: Check field literature for existing rates that could be used in a process-based model. 
+- `Demographic rates`: Check field literature for existing rates that could be used in a process-based model. 
 - Instrument validity: Assess whether your instrument affects outcome only through treatment. 
 - `No M–O confounding`:
     1. List all variables that could simultaneously influence your mediator and your outcome.

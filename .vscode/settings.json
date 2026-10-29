@@ -15,6 +15,18 @@
         "/^grep -n \"clean\\\\\\|def main\\\\\\|__main__\\\\\\|\\^import\\\\\\|\\^from\" scripts/generate_method_pages\\.py \\| head -30; sed -n 1,60p scripts/clean_method_assessments\\.py; sed -n 55,75p index\\.md; ls -la _data/method_assessments_clean\\.tsv; python3 --version; ruby -v \\| head -1$/": {
             "approve": true,
             "matchCommandLine": true
+        },
+        "/^grep -n \"METHOD_FALLBACK_VALUES\\\\\\|SKIP_SELECTED\" -B3 -A12 scripts/validation/navidam_suggester\\.py \\| sed -n 1,120p; grep -rn -i \"don't know\\\\\\|Don\\.t know\" assets/js/\\*\\.js \\| head -20\npython3 - <<'E'\nimport csv\nr=list\\(csv\\.DictReader\\(open\\(\"_data/DetectionAttribution methods - Method Assessment\\.tsv\"\\),delimiter=\"\\\\t\"\\)\\)\nprint\\(len\\(r\\)\\)\nfrom collections import Counter\nc=Counter\\(x\\[\"Model specific\"\\] for x in r\\); print\\(c\\.most_common\\(12\\)\\)\nfor k in \\[\"No unobserved confounders\",\"IID\",\"Requires explicit processes\",\"Parametric nature\"\\]:\n    print\\(k,Counter\\(x\\[k\\] for x in r\\)\\.most_common\\(6\\)\\)\nE$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python3 - <<'E'\nimport csv\nfrom collections import Counter\nr=list\\(csv\\.DictReader\\(open\\(\"_data/DetectionAttribution methods - Method Assessment\\.tsv\"\\),delimiter=\"\\\\t\"\\)\\)\nprint\\(\\[k for k in r\\[0\\] if \"odel\" in k or \"xplicit\" in k\\]\\)\nk=\\[k for k in r\\[0\\] if k\\.strip\\(\\)==\"Model specific\" or \"Model spec\" in k\\]\\[0\\]\nprint\\(Counter\\(x\\[k\\] for x in r\\)\\.most_common\\(12\\)\\)\nE\nsed -n 585,640p assets/js/filter\\.js; grep -n \"Model specific\" _data/criteria_mapping\\.json \\| head$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^python3 - <<'E'\nimport csv\nfrom collections import Counter\nrows=list\\(csv\\.reader\\(open\\(\"_data/DetectionAttribution methods - Method Assessment\\.tsv\"\\),delimiter=\"\\\\t\"\\)\\)\nfor i,h in enumerate\\(rows\\[:6\\]\\): print\\(i,\\[ \\(j,c\\) for j,c in enumerate\\(h\\) if \"odel\" in c\\]\\)\nE\ngrep -rn \"Model specific\\\\\\|modelspecific\" _data/criteria_types\\.yml contents 2>/dev/null \\| head; grep -rli \"no specific assumption\" \\. --include=\\* 2>/dev/null \\| grep -v \"_site\\\\\\|vendor\" \\| head$/": {
+            "approve": true,
+            "matchCommandLine": true
         }
     }
 }

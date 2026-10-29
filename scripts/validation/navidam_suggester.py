@@ -123,6 +123,8 @@ IMPLIED_OPTIONS = {
 }
 
 SKIP_SELECTED_VALUES = {"", "Don't know", "Inapplicable", "__unsure__"}
+NO_SPECIFIC_CRITERION = "Model specific"
+NO_SPECIFIC_VALUE = "No specific assumption"
 METHOD_FALLBACK_VALUES = {"Don't know", "Inapplicable"}
 
 METHOD_CONCEPT_PATTERNS = [
@@ -285,6 +287,9 @@ class NaviDAMSuggestionEngine:
 
             selected_values = _normalize_selected_values(criterion, criteria_row.get(criterion, ""))
             if not selected_values:
+                continue
+            # No restriction requested: keep all methods, including empty cells
+            if criterion == NO_SPECIFIC_CRITERION and NO_SPECIFIC_VALUE in selected_values:
                 continue
 
             composite_for_criterion = COMPOSITE_OPTIONS.get(criterion, {})

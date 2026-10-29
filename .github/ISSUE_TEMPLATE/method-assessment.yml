@@ -473,7 +473,7 @@ body:
       options:
         - label: Parallel trends
         - label: Stationarity
-        - label: Dispersal / reproduction / mortality
+        - label: Demographic rates
         - label: Instrument validity
         - label: Normality of random effects
         - label: No M-O confounding
@@ -484,6 +484,9 @@ body:
         - label: Good pretreatment fit
         - label: Time-varying or site-varying C.
         - label: Dynamic system
+        - label: Non-Gaussian noise
+        - label: Independent noise
+        - label: Invariance across environments
 
   - type: dropdown # Ordinal criteria
     id: confidence
