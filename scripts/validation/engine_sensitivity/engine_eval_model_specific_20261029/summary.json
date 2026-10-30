@@ -1,0 +1,771 @@
+{
+  "n_methods": 101,
+  "n_method_objective_pairs": 174,
+  "n_assessed_cells": 2068,
+  "ordinal_criteria": [
+    "Causal Markov Condition",
+    "Common support (positivity)",
+    "Faithfulness",
+    "Handles few samples",
+    "Handles huge datasets (n)",
+    "Handles lag effects",
+    "Handles missing data",
+    "IID",
+    "Minimal TS length",
+    "No interference",
+    "No unobserved confounders",
+    "Propaguates uncertainty",
+    "RS-data proven",
+    "Well-defined treatments"
+  ],
+  "multiple_criteria": [
+    "Estimand",
+    "Exposure type",
+    "Fonctional form",
+    "Language",
+    "Model specific",
+    "Number of variables",
+    "Parametric nature",
+    "Requires explicit processes",
+    "Type",
+    "Usage"
+  ],
+  "recall_exact_assessments": 1.0,
+  "by_specification": [
+    {
+      "k_spec": 0,
+      "k_mean": 0.0,
+      "k_filtering_mean": 0.0,
+      "size_median": 41.0,
+      "size_mean": 36.2183908045977,
+      "size_near_median": 41.0,
+      "size_q25": 18.0,
+      "size_q75": 54.0,
+      "size_one": 0.0
+    },
+    {
+      "k_spec": 1,
+      "k_mean": 1.0,
+      "k_filtering_mean": 0.9445402298850575,
+      "size_median": 24.0,
+      "size_mean": 25.735344827586207,
+      "size_near_median": 41.0,
+      "size_q25": 14.0,
+      "size_q75": 36.0,
+      "size_one": 0.006896551724137931
+    },
+    {
+      "k_spec": 2,
+      "k_mean": 2.0,
+      "k_filtering_mean": 1.8864942528735633,
+      "size_median": 15.0,
+      "size_mean": 18.147701149425288,
+      "size_near_median": 30.0,
+      "size_q25": 8.0,
+      "size_q75": 26.0,
+      "size_one": 0.01752873563218391
+    },
+    {
+      "k_spec": 4,
+      "k_mean": 4.0,
+      "k_filtering_mean": 3.7589080459770114,
+      "size_median": 7.0,
+      "size_mean": 10.091091954022989,
+      "size_near_median": 22.0,
+      "size_q25": 3.0,
+      "size_q75": 14.0,
+      "size_one": 0.08333333333333333
+    },
+    {
+      "k_spec": 8,
+      "k_mean": 8.0,
+      "k_filtering_mean": 7.5120689655172415,
+      "size_median": 2.0,
+      "size_mean": 3.9655172413793105,
+      "size_near_median": 8.0,
+      "size_q25": 1.0,
+      "size_q75": 5.0,
+      "size_one": 0.32701149425287357
+    },
+    {
+      "k_spec": 12,
+      "k_mean": 12.0,
+      "k_filtering_mean": 11.298850574712644,
+      "size_median": 1.0,
+      "size_mean": 2.114080459770115,
+      "size_near_median": 4.0,
+      "size_q25": 1.0,
+      "size_q75": 2.0,
+      "size_one": 0.5459770114942529
+    },
+    {
+      "k_spec": 16,
+      "k_mean": 16.0,
+      "k_filtering_mean": 14.428448275862069,
+      "size_median": 1.0,
+      "size_mean": 1.5692528735632183,
+      "size_near_median": 2.0,
+      "size_q25": 1.0,
+      "size_q75": 2.0,
+      "size_one": 0.6764367816091954
+    },
+    {
+      "k_spec": 20,
+      "k_mean": 20.0,
+      "k_filtering_mean": 16.228448275862068,
+      "size_median": 1.0,
+      "size_mean": 1.4198275862068965,
+      "size_near_median": 2.0,
+      "size_q25": 1.0,
+      "size_q75": 2.0,
+      "size_one": 0.7290229885057471
+    },
+    {
+      "k_spec": 24,
+      "k_mean": 24.0,
+      "k_filtering_mean": 17.120689655172413,
+      "size_median": 1.0,
+      "size_mean": 1.3772988505747126,
+      "size_near_median": 2.0,
+      "size_q25": 1.0,
+      "size_q75": 2.0,
+      "size_one": 0.7456896551724138
+    }
+  ],
+  "full_spec_by_objective": [
+    {
+      "objective": "Causal relationship(s)",
+      "n": 600,
+      "k_mean": 19.666666666666668,
+      "size_median": 1.0,
+      "size_mean": 1.1783333333333332,
+      "unique": 0.8566666666666667
+    },
+    {
+      "objective": "Detection",
+      "n": 820,
+      "k_mean": 13.146341463414634,
+      "size_median": 1.0,
+      "size_mean": 1.55,
+      "unique": 0.6048780487804878
+    },
+    {
+      "objective": "Effect estimation",
+      "n": 1080,
+      "k_mean": 20.962962962962962,
+      "size_median": 1.0,
+      "size_mean": 1.163888888888889,
+      "unique": 0.8666666666666667
+    },
+    {
+      "objective": "Predictive task + interpretability",
+      "n": 320,
+      "k_mean": 15.375,
+      "size_median": 1.0,
+      "size_mean": 1.15625,
+      "unique": 0.84375
+    },
+    {
+      "objective": "Scenario projection",
+      "n": 300,
+      "k_mean": 15.933333333333334,
+      "size_median": 1.0,
+      "size_mean": 1.12,
+      "unique": 0.88
+    },
+    {
+      "objective": "Significance and robustness tests",
+      "n": 360,
+      "k_mean": 12.944444444444445,
+      "size_median": 2.0,
+      "size_mean": 2.3666666666666667,
+      "unique": 0.3194444444444444
+    }
+  ],
+  "methods_per_objective": {
+    "Predictive task + interpretability": 16,
+    "Effect estimation": 54,
+    "Causal relationship(s)": 30,
+    "Scenario projection": 15,
+    "Significance and robustness tests": 18,
+    "Detection": 41
+  },
+  "ablation": [
+    {
+      "criterion": "Model specific",
+      "mean_increase": 0.3875,
+      "share_informative": 0.25972222222222224,
+      "n": 720
+    },
+    {
+      "criterion": "Fonctional form",
+      "mean_increase": 0.18923076923076923,
+      "share_informative": 0.12461538461538461,
+      "n": 1300
+    },
+    {
+      "criterion": "Requires explicit processes",
+      "mean_increase": 0.1652941176470588,
+      "share_informative": 0.09470588235294118,
+      "n": 1700
+    },
+    {
+      "criterion": "Usage",
+      "mean_increase": 0.11785714285714285,
+      "share_informative": 0.0625,
+      "n": 1680
+    },
+    {
+      "criterion": "Number of variables",
+      "mean_increase": 0.11609195402298851,
+      "share_informative": 0.07471264367816093,
+      "n": 1740
+    },
+    {
+      "criterion": "Estimand",
+      "mean_increase": 0.11009174311926606,
+      "share_informative": 0.08990825688073395,
+      "n": 1090
+    },
+    {
+      "criterion": "Parametric nature",
+      "mean_increase": 0.09259259259259259,
+      "share_informative": 0.05925925925925926,
+      "n": 1080
+    },
+    {
+      "criterion": "Handles missing data",
+      "mean_increase": 0.06589595375722543,
+      "share_informative": 0.05433526011560694,
+      "n": 1730
+    },
+    {
+      "criterion": "RS-data proven",
+      "mean_increase": 0.058045977011494256,
+      "share_informative": 0.045402298850574715,
+      "n": 1740
+    },
+    {
+      "criterion": "Handles lag effects",
+      "mean_increase": 0.05641025641025641,
+      "share_informative": 0.03333333333333333,
+      "n": 1170
+    },
+    {
+      "criterion": "Handles huge datasets (n)",
+      "mean_increase": 0.051744186046511625,
+      "share_informative": 0.02558139534883721,
+      "n": 1720
+    },
+    {
+      "criterion": "Handles few samples",
+      "mean_increase": 0.0488235294117647,
+      "share_informative": 0.03294117647058824,
+      "n": 1700
+    },
+    {
+      "criterion": "Exposure type",
+      "mean_increase": 0.02586206896551724,
+      "share_informative": 0.021839080459770115,
+      "n": 1740
+    },
+    {
+      "criterion": "Language",
+      "mean_increase": 0.025595238095238095,
+      "share_informative": 0.02142857142857143,
+      "n": 1680
+    },
+    {
+      "criterion": "Propaguates uncertainty",
+      "mean_increase": 0.024489795918367346,
+      "share_informative": 0.022448979591836733,
+      "n": 980
+    },
+    {
+      "criterion": "Faithfulness",
+      "mean_increase": 0.020833333333333332,
+      "share_informative": 0.008333333333333333,
+      "n": 240
+    },
+    {
+      "criterion": "Common support (positivity)",
+      "mean_increase": 0.014925373134328358,
+      "share_informative": 0.014925373134328358,
+      "n": 670
+    },
+    {
+      "criterion": "Well-defined treatments",
+      "mean_increase": 0.014705882352941176,
+      "share_informative": 0.014705882352941176,
+      "n": 680
+    },
+    {
+      "criterion": "Type",
+      "mean_increase": 0.013294797687861272,
+      "share_informative": 0.012716763005780347,
+      "n": 1730
+    },
+    {
+      "criterion": "IID",
+      "mean_increase": 0.007207207207207207,
+      "share_informative": 0.007207207207207207,
+      "n": 1110
+    },
+    {
+      "criterion": "Minimal TS length",
+      "mean_increase": 0.006586826347305389,
+      "share_informative": 0.006586826347305389,
+      "n": 1670
+    },
+    {
+      "criterion": "No unobserved confounders",
+      "mean_increase": 0.005555555555555556,
+      "share_informative": 0.005555555555555556,
+      "n": 900
+    },
+    {
+      "criterion": "No interference",
+      "mean_increase": 0.0,
+      "share_informative": 0.0,
+      "n": 820
+    },
+    {
+      "criterion": "Causal Markov Condition",
+      "mean_increase": 0.0,
+      "share_informative": 0.0,
+      "n": 200
+    }
+  ],
+  "ablation_base_size_mean": 1.3810344827586207,
+  "error_propagation": [
+    {
+      "e": 0.0,
+      "k_spec": 1,
+      "recall": 1.0,
+      "k_mean": 1.0,
+      "k_filtering_mean": 0.9433908045977012,
+      "size_median": 24.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 2,
+      "recall": 1.0,
+      "k_mean": 2.0,
+      "k_filtering_mean": 1.8830459770114942,
+      "size_median": 15.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 4,
+      "recall": 1.0,
+      "k_mean": 4.0,
+      "k_filtering_mean": 3.7580459770114945,
+      "size_median": 7.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 8,
+      "recall": 1.0,
+      "k_mean": 8.0,
+      "k_filtering_mean": 7.533333333333333,
+      "size_median": 2.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 12,
+      "recall": 1.0,
+      "k_mean": 12.0,
+      "k_filtering_mean": 11.285344827586206,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 16,
+      "recall": 1.0,
+      "k_mean": 16.0,
+      "k_filtering_mean": 14.410057471264368,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 20,
+      "recall": 1.0,
+      "k_mean": 20.0,
+      "k_filtering_mean": 16.222126436781608,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 24,
+      "recall": 1.0,
+      "k_mean": 24.0,
+      "k_filtering_mean": 17.120689655172413,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 1,
+      "recall": 0.9747126436781609,
+      "k_mean": 1.0,
+      "k_filtering_mean": 0.9413793103448276,
+      "size_median": 23.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 2,
+      "recall": 0.9488505747126437,
+      "k_mean": 2.0,
+      "k_filtering_mean": 1.8919540229885057,
+      "size_median": 16.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 4,
+      "recall": 0.9022988505747126,
+      "k_mean": 4.0,
+      "k_filtering_mean": 3.774137931034483,
+      "size_median": 7.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 8,
+      "recall": 0.8103448275862069,
+      "k_mean": 8.0,
+      "k_filtering_mean": 7.537356321839081,
+      "size_median": 2.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 12,
+      "recall": 0.7324712643678161,
+      "k_mean": 12.0,
+      "k_filtering_mean": 11.28448275862069,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 16,
+      "recall": 0.6655172413793103,
+      "k_mean": 16.0,
+      "k_filtering_mean": 14.41867816091954,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 20,
+      "recall": 0.6419540229885058,
+      "k_mean": 20.0,
+      "k_filtering_mean": 16.225,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 24,
+      "recall": 0.6255747126436781,
+      "k_mean": 24.0,
+      "k_filtering_mean": 17.120689655172413,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 1,
+      "recall": 0.9278735632183908,
+      "k_mean": 1.0,
+      "k_filtering_mean": 0.9405172413793104,
+      "size_median": 22.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 2,
+      "recall": 0.8482758620689655,
+      "k_mean": 2.0,
+      "k_filtering_mean": 1.8882183908045977,
+      "size_median": 15.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 4,
+      "recall": 0.7097701149425287,
+      "k_mean": 4.0,
+      "k_filtering_mean": 3.759770114942529,
+      "size_median": 6.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 8,
+      "recall": 0.5204022988505748,
+      "k_mean": 8.0,
+      "k_filtering_mean": 7.519540229885058,
+      "size_median": 2.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 12,
+      "recall": 0.38017241379310346,
+      "k_mean": 12.0,
+      "k_filtering_mean": 11.297701149425288,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 16,
+      "recall": 0.29770114942528736,
+      "k_mean": 16.0,
+      "k_filtering_mean": 14.418390804597701,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 20,
+      "recall": 0.257183908045977,
+      "k_mean": 20.0,
+      "k_filtering_mean": 16.220402298850576,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.15,
+      "k_spec": 24,
+      "recall": 0.24568965517241378,
+      "k_mean": 24.0,
+      "k_filtering_mean": 17.120689655172413,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 1,
+      "recall": 0.8462643678160919,
+      "k_mean": 1.0,
+      "k_filtering_mean": 0.9433908045977012,
+      "size_median": 21.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 2,
+      "recall": 0.7066091954022988,
+      "k_mean": 2.0,
+      "k_filtering_mean": 1.8727011494252874,
+      "size_median": 14.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 4,
+      "recall": 0.5169540229885058,
+      "k_mean": 4.0,
+      "k_filtering_mean": 3.768103448275862,
+      "size_median": 5.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 8,
+      "recall": 0.24856321839080459,
+      "k_mean": 8.0,
+      "k_filtering_mean": 7.534195402298851,
+      "size_median": 1.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 12,
+      "recall": 0.12614942528735631,
+      "k_mean": 12.0,
+      "k_filtering_mean": 11.304597701149426,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 16,
+      "recall": 0.07270114942528735,
+      "k_mean": 16.0,
+      "k_filtering_mean": 14.427873563218391,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 20,
+      "recall": 0.054310344827586204,
+      "k_mean": 20.0,
+      "k_filtering_mean": 16.22471264367816,
+      "size_median": 0.0
+    },
+    {
+      "e": 0.3,
+      "k_spec": 24,
+      "recall": 0.05201149425287356,
+      "k_mean": 24.0,
+      "k_filtering_mean": 17.120689655172413,
+      "size_median": 0.0
+    }
+  ],
+  "omission_errors": [
+    {
+      "e": 0.0,
+      "k_spec": 4,
+      "recall": 1.0
+    },
+    {
+      "e": 0.0,
+      "k_spec": 24,
+      "recall": 1.0
+    },
+    {
+      "e": 0.05,
+      "k_spec": 4,
+      "recall": 0.9209770114942529
+    },
+    {
+      "e": 0.05,
+      "k_spec": 24,
+      "recall": 0.6844827586206896
+    },
+    {
+      "e": 0.1,
+      "k_spec": 4,
+      "recall": 0.8327586206896552
+    },
+    {
+      "e": 0.1,
+      "k_spec": 24,
+      "recall": 0.44310344827586207
+    },
+    {
+      "e": 0.2,
+      "k_spec": 4,
+      "recall": 0.7112068965517241
+    },
+    {
+      "e": 0.2,
+      "k_spec": 24,
+      "recall": 0.21724137931034482
+    },
+    {
+      "e": 0.3,
+      "k_spec": 4,
+      "recall": 0.5790229885057471
+    },
+    {
+      "e": 0.3,
+      "k_spec": 24,
+      "recall": 0.09798850574712643
+    }
+  ],
+  "single_criterion_power": {
+    "Model specific": 0.853148838201345,
+    "Estimand": 0.5627673769092432,
+    "Parametric nature": 0.49604338134430725,
+    "Fonctional form": 0.4424466680564242,
+    "Requires explicit processes": 0.35589205058717255,
+    "Usage": 0.3394403041252635,
+    "Number of variables": 0.3173563088600235,
+    "No unobserved confounders": 0.2992592592592593,
+    "Handles lag effects": 0.29818376068376073,
+    "Exposure type": 0.2862059880177346,
+    "RS-data proven": 0.2752562714803393,
+    "IID": 0.2736236236236236,
+    "Handles few samples": 0.2711515622509166,
+    "Handles missing data": 0.2689686884826459,
+    "Handles huge datasets (n)": 0.2675342298481124,
+    "No interference": 0.2521680216802168,
+    "Faithfulness": 0.23750000000000002,
+    "Propaguates uncertainty": 0.2276077097505669,
+    "Type": 0.22108064288735374,
+    "Common support (positivity)": 0.19524599226091766,
+    "Well-defined treatments": 0.18965141612200437,
+    "Causal Markov Condition": 0.13999999999999999,
+    "Language": 0.131169949348303,
+    "Minimal TS length": 0.09791311685571948
+  },
+  "multiple_option_criterion_power": {
+    "Model specific": {
+      "n_options": 2,
+      "removed": 0.8190244431741192
+    },
+    "Number of variables": {
+      "n_options": 2,
+      "removed": 0.17538277402250396
+    },
+    "Estimand": {
+      "n_options": 2,
+      "removed": 0.41421836022641567
+    },
+    "Usage": {
+      "n_options": 2,
+      "removed": 0.24667799877403537
+    },
+    "Fonctional form": {
+      "n_options": 2,
+      "removed": 0.3195958121974382
+    },
+    "Parametric nature": {
+      "n_options": 2,
+      "removed": 0.281895861911294
+    },
+    "Exposure type": {
+      "n_options": 2,
+      "removed": 0.19670621385332626
+    },
+    "Type": {
+      "n_options": 2,
+      "removed": 0.0589921727733655
+    },
+    "Requires explicit processes": {
+      "n_options": 2,
+      "removed": 0.17794602529358627
+    },
+    "Language": {
+      "n_options": 2,
+      "removed": 0.061585097001763685
+    }
+  },
+  "triple_option_criterion_power": {
+    "Model specific": {
+      "n_options": 3,
+      "removed": 0.7878090366648266
+    },
+    "Number of variables": {
+      "n_options": 3,
+      "removed": 0.07168729038822956
+    },
+    "Estimand": {
+      "n_options": 3,
+      "removed": 0.304168616541755
+    },
+    "Usage": {
+      "n_options": 3,
+      "removed": 0.159232239643825
+    },
+    "Fonctional form": {
+      "n_options": 3,
+      "removed": 0.22077812521714962
+    },
+    "Parametric nature": {
+      "n_options": 3,
+      "removed": 0.11710676726108823
+    },
+    "Exposure type": {
+      "n_options": 3,
+      "removed": 0.12724047077635528
+    },
+    "Type": {
+      "n_options": 3,
+      "removed": 0.0
+    },
+    "Requires explicit processes": {
+      "n_options": 3,
+      "removed": 0.0
+    },
+    "Language": {
+      "n_options": 3,
+      "removed": 0.020765381016905414
+    }
+  },
+  "breadth_ai_vs_expert": {
+    "share_options_ai": 0.3442129834389896,
+    "share_options_expert": 0.40061532573995184,
+    "p_mw": 0.0029329788281248818,
+    "fallback_cells_ai": 3.3225806451612905,
+    "fallback_cells_expert": 2.5384615384615383,
+    "n_ai": 62
+  },
+  "false_positive_rate_ai": 0.00781732789519219,
+  "false_positive_rate_expert": 0.013164357991944197,
+  "p_fp_mw": 0.8385680570792001
+}

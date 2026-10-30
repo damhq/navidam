@@ -46,7 +46,15 @@ Consult the [Good practices]({{ site.baseurl }}/practices) panel and **especiall
 <a id="user-input"></a>
 ## [User input invite](#user-input){: .btn .btn-purple } <span style="font-size:1em;">&#8594;</span> Evaluating your project's needs
 
-Choose the [criteria]({{ site.baseurl }}/criteria) options in the dropdown lists that **best describe your project**. Criteria are adapted to each objective.
+Choose the [criteria]({{ site.baseurl }}/criteria) options that **best describe your project**. Criteria are adapted to each objective.
+
+{: .new-title }
+> Tips for reliable assessments
+> 
+> 1. Specify only what your study clearly requires; leave doubtful criteria on `Unsure`.
+> 2. Beyond about **8-12** criteria, extra ones rarely narrow the list but can wrongly exclude a suitable method.
+> 3. Check the [near misses](#near-misses): methods failing exactly one criterion.
+> 4. If no method matches, re-check your answers before concluding none fits.
 
 
 <script type="module" src="assets/js/filter.js"></script>
