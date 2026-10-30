@@ -50,6 +50,20 @@ NaviDAM is implemented in this collaborative website and is organized around a d
 
     - **Candidate methods** is the resulting list of methods that match the user requirements, organised by category. Each method can be clicked on to open the corresponding documentation page.
 
+        <details id="near-misses" markdown="block">
+        <summary>Near misses</summary>
+
+        Below the candidate methods, a collapsed **Near misses** section lists the methods that match all the specified criteria but exactly one. Each one is tagged with the single criterion it fails, e.g. *Fails: Handles lag effects (method: Possible, you asked: Yes)*, and the tags are ordered as the criteria are displayed. Near misses are **not** matches: they are shown to help when an assessment is uncertain or too strict, since a single mis-assessed criterion can otherwise hide a suitable method. The section appears when at least one near miss exists, and is expanded by default when no method matches all criteria. Near misses are listed separately and labelled *Near miss (NOT a match)* in the exported `.csv`; the candidate methods and their export are unchanged. In simulations, near misses recover most of the recall lost to assessment errors (when up to about 15% of criteria are mis-assessed), at the cost of a list typically 2-3 times longer: check each failed criterion before considering a near miss.
+        </details>
+        <script>
+        (function () {
+          var d = document.getElementById("near-misses");
+          function openIfTargeted() { if (d && location.hash === "#near-misses") d.open = true; }
+          openIfTargeted();
+          window.addEventListener("hashchange", openIfTargeted);
+        })();
+        </script>
+
     - The **Graph Explorer** allows exploring, vizualizing and querying the network of methods and criteria (work in progress).
             
         - Exportable outputs: Method scheme `.png`, criteria assessment + methods `.csv`, suited method list `.txt` (work in progress)

@@ -38,6 +38,7 @@
       "k_filtering_mean": 0.0,
       "size_median": 41.0,
       "size_mean": 36.2183908045977,
+      "size_near_median": 41.0,
       "size_q25": 18.0,
       "size_q75": 54.0,
       "size_one": 0.0
@@ -48,6 +49,7 @@
       "k_filtering_mean": 0.9445402298850575,
       "size_median": 24.0,
       "size_mean": 25.735344827586207,
+      "size_near_median": 41.0,
       "size_q25": 14.0,
       "size_q75": 36.0,
       "size_one": 0.006896551724137931
@@ -58,6 +60,7 @@
       "k_filtering_mean": 1.8864942528735633,
       "size_median": 15.0,
       "size_mean": 18.147701149425288,
+      "size_near_median": 30.0,
       "size_q25": 8.0,
       "size_q75": 26.0,
       "size_one": 0.01752873563218391
@@ -68,6 +71,7 @@
       "k_filtering_mean": 3.7589080459770114,
       "size_median": 7.0,
       "size_mean": 10.091091954022989,
+      "size_near_median": 22.0,
       "size_q25": 3.0,
       "size_q75": 14.0,
       "size_one": 0.08333333333333333
@@ -78,6 +82,7 @@
       "k_filtering_mean": 7.5120689655172415,
       "size_median": 2.0,
       "size_mean": 3.9655172413793105,
+      "size_near_median": 8.0,
       "size_q25": 1.0,
       "size_q75": 5.0,
       "size_one": 0.32701149425287357
@@ -88,6 +93,7 @@
       "k_filtering_mean": 11.298850574712644,
       "size_median": 1.0,
       "size_mean": 2.114080459770115,
+      "size_near_median": 4.0,
       "size_q25": 1.0,
       "size_q75": 2.0,
       "size_one": 0.5459770114942529
@@ -98,6 +104,7 @@
       "k_filtering_mean": 14.428448275862069,
       "size_median": 1.0,
       "size_mean": 1.5692528735632183,
+      "size_near_median": 2.0,
       "size_q25": 1.0,
       "size_q75": 2.0,
       "size_one": 0.6764367816091954
@@ -108,6 +115,7 @@
       "k_filtering_mean": 16.228448275862068,
       "size_median": 1.0,
       "size_mean": 1.4198275862068965,
+      "size_near_median": 2.0,
       "size_q25": 1.0,
       "size_q75": 2.0,
       "size_one": 0.7290229885057471
@@ -118,6 +126,7 @@
       "k_filtering_mean": 17.120689655172413,
       "size_median": 1.0,
       "size_mean": 1.3772988505747126,
+      "size_near_median": 2.0,
       "size_q25": 1.0,
       "size_q75": 2.0,
       "size_one": 0.7456896551724138
@@ -174,12 +183,12 @@
     }
   ],
   "methods_per_objective": {
+    "Predictive task + interpretability": 16,
+    "Effect estimation": 54,
     "Causal relationship(s)": 30,
     "Scenario projection": 15,
-    "Detection": 41,
     "Significance and robustness tests": 18,
-    "Predictive task + interpretability": 16,
-    "Effect estimation": 54
+    "Detection": 41
   },
   "ablation": [
     {
@@ -665,9 +674,33 @@
     "Minimal TS length": 0.09791311685571948
   },
   "multiple_option_criterion_power": {
+    "Model specific": {
+      "n_options": 2,
+      "removed": 0.8190244431741192
+    },
+    "Number of variables": {
+      "n_options": 2,
+      "removed": 0.17538277402250396
+    },
+    "Estimand": {
+      "n_options": 2,
+      "removed": 0.41421836022641567
+    },
+    "Usage": {
+      "n_options": 2,
+      "removed": 0.24667799877403537
+    },
     "Fonctional form": {
       "n_options": 2,
       "removed": 0.3195958121974382
+    },
+    "Parametric nature": {
+      "n_options": 2,
+      "removed": 0.281895861911294
+    },
+    "Exposure type": {
+      "n_options": 2,
+      "removed": 0.19670621385332626
     },
     "Type": {
       "n_options": 2,
@@ -677,39 +710,39 @@
       "n_options": 2,
       "removed": 0.17794602529358627
     },
-    "Parametric nature": {
-      "n_options": 2,
-      "removed": 0.281895861911294
-    },
-    "Usage": {
-      "n_options": 2,
-      "removed": 0.24667799877403537
-    },
-    "Model specific": {
-      "n_options": 2,
-      "removed": 0.8190244431741192
-    },
-    "Estimand": {
-      "n_options": 2,
-      "removed": 0.41421836022641567
-    },
-    "Number of variables": {
-      "n_options": 2,
-      "removed": 0.17538277402250396
-    },
-    "Exposure type": {
-      "n_options": 2,
-      "removed": 0.19670621385332626
-    },
     "Language": {
       "n_options": 2,
       "removed": 0.061585097001763685
     }
   },
   "triple_option_criterion_power": {
+    "Model specific": {
+      "n_options": 3,
+      "removed": 0.7878090366648266
+    },
+    "Number of variables": {
+      "n_options": 3,
+      "removed": 0.07168729038822956
+    },
+    "Estimand": {
+      "n_options": 3,
+      "removed": 0.304168616541755
+    },
+    "Usage": {
+      "n_options": 3,
+      "removed": 0.159232239643825
+    },
     "Fonctional form": {
       "n_options": 3,
       "removed": 0.22077812521714962
+    },
+    "Parametric nature": {
+      "n_options": 3,
+      "removed": 0.11710676726108823
+    },
+    "Exposure type": {
+      "n_options": 3,
+      "removed": 0.12724047077635528
     },
     "Type": {
       "n_options": 3,
@@ -718,30 +751,6 @@
     "Requires explicit processes": {
       "n_options": 3,
       "removed": 0.0
-    },
-    "Parametric nature": {
-      "n_options": 3,
-      "removed": 0.11710676726108823
-    },
-    "Usage": {
-      "n_options": 3,
-      "removed": 0.159232239643825
-    },
-    "Model specific": {
-      "n_options": 3,
-      "removed": 0.7878090366648266
-    },
-    "Estimand": {
-      "n_options": 3,
-      "removed": 0.304168616541755
-    },
-    "Number of variables": {
-      "n_options": 3,
-      "removed": 0.07168729038822956
-    },
-    "Exposure type": {
-      "n_options": 3,
-      "removed": 0.12724047077635528
     },
     "Language": {
       "n_options": 3,

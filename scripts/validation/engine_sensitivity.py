@@ -233,13 +233,15 @@ def main():
             for r, o in pairs:
                 s = make_study(r, o, rng, kk)
                 cand = eng.suggest_methods(s)
+                near_size = len(cand) + len({n["Method"] for n in eng.suggest_near_misses(s)} - set(cand))
                 recs.append(dict(k_spec=kk, objective=o, method=r["Method"], k=n_specified(s),
-                                 size=len(cand), hit=r["Method"] in cand))
+                                 size=len(cand), size_near=near_size, hit=r["Method"] in cand))
     bench = pd.DataFrame(recs)
     bench.to_csv(out / "benchmark_runs.csv", index=False)
     res["recall_exact_assessments"] = float(bench.hit.mean())
     g = bench.groupby("k_spec").agg(k_mean=("k_spec", "mean"), k_filtering_mean=("k", "mean"),
                                      size_median=("size", "median"), size_mean=("size", "mean"),
+                                     size_near_median=("size_near", "median"),
                                      size_q25=("size", lambda x: x.quantile(.25)),
                                      size_q75=("size", lambda x: x.quantile(.75)),
                                      size_one=("size", lambda x: (x == 1).mean()))

@@ -132,6 +132,29 @@
   text-align: center;
 }
 
+.near-misses {
+  margin-top: 1.5em;
+}
+
+.near-misses summary {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.near-misses-note {
+  font-style: italic;
+}
+
+.near-misses-list li {
+  margin-bottom: 0.4em;
+}
+
+.near-misses .near-miss-tag {
+  display: inline-block;
+  margin-left: 0.5em;
+  cursor: default;
+}
+
 .method-categories {
   display: flex;
   flex-wrap: wrap;

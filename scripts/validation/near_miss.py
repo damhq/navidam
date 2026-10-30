@@ -7,8 +7,8 @@ Run from the repository root:
 
 Same design as the error-propagation analysis in engine_sensitivity.py (studies from the TRUE
 table, run on a PERTURBED table). The near-miss set is the union of the strict result and the
-results obtained when each specified criterion is dropped in turn, i.e. all methods failing at
-most one criterion. Results are saved as near_miss.json / near_miss_runs.csv in the results folder.
+methods returned by NaviDAMSuggestionEngine.suggest_near_misses (the near-miss feature of the website),
+i.e. all methods failing at most one criterion. Results are saved as near_miss.json / near_miss_runs.csv in the results folder.
 """
 import argparse, json, random
 from pathlib import Path
@@ -36,9 +36,7 @@ def main():
                 for kk in K_LEVELS[1:]:
                     s = es.make_study(r, o, rng, kk)
                     strict = set(eng.suggest_methods(s))
-                    near = set(strict)
-                    for c in [c for c in s if c != "Objective"]:
-                        near |= set(eng.suggest_methods({x: v for x, v in s.items() if x != c}))
+                    near = strict | {n["Method"] for n in eng.suggest_near_misses(s)}
                     m = r["Method"]
                     recs.append(dict(e=e, k_spec=kk, strict_hit=m in strict, near_hit=m in near,
                                      strict_size=len(strict), near_size=len(near)))

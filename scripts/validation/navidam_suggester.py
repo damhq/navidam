@@ -276,80 +276,119 @@ class NaviDAMSuggestionEngine:
     def __init__(self, method_rows=None):
         self.method_rows = method_rows if method_rows is not None else load_method_rows()
 
-    def suggest_methods(self, criteria_row):
+    @staticmethod
+    def _filter_by_criterion(rows, criterion, selected_values):
+        composite_for_criterion = COMPOSITE_OPTIONS.get(criterion, {})
+        if any(selected in composite_for_criterion for selected in selected_values):
+            included = set()
+            for selected in selected_values:
+                if selected in composite_for_criterion:
+                    included.update(composite_for_criterion[selected])
+                else:
+                    included.add(selected)
+            return [
+                row
+                for row in rows
+                if any(
+                    method_value in included or method_value in METHOD_FALLBACK_VALUES
+                    for method_value in _method_values(row, criterion)
+                )
+            ]
+
+        if criterion in ORDINAL_CRITERIA_ORDER:
+            order = ORDINAL_CRITERIA_ORDER[criterion]
+            selected_positions = [order.index(value) for value in selected_values if value in order]
+            if not selected_positions:
+                return rows
+            return [
+                row
+                for row in rows
+                if any(
+                    method_value in METHOD_FALLBACK_VALUES
+                    or (
+                        method_value in order
+                        and any(order.index(method_value) >= selected_position for selected_position in selected_positions)
+                    )
+                    for method_value in _method_values(row, criterion)
+                )
+            ]
+
+        implied = IMPLIED_OPTIONS.get(criterion, {})
+
+        def matches(method_values):
+            if any(value in METHOD_FALLBACK_VALUES for value in method_values):
+                return True
+            return any(
+                all(c in method_values for c in implied[sel]) if sel in implied else sel in method_values
+                for sel in selected_values
+            )
+
+        return [row for row in rows if matches(_method_values(row, criterion))]
+
+    @staticmethod
+    def _active_selections(criteria_row):
+        """Criteria that restrict the result, as {criterion: normalized selected values}."""
         objective = normalize_option_value("Objective", criteria_row.get("Objective", ""))
         used_criteria_keys = get_used_criteria_keys(objective)
-        filtered = self.method_rows
-
+        selections = {}
         for criterion in FILTER_CRITERIA:
             if criterion not in used_criteria_keys:
                 continue
-
             selected_values = _normalize_selected_values(criterion, criteria_row.get(criterion, ""))
             if not selected_values:
                 continue
             # No restriction requested: keep all methods, including empty cells
             if criterion == NO_SPECIFIC_CRITERION and NO_SPECIFIC_VALUE in selected_values:
                 continue
+            selections[criterion] = selected_values
+        return selections
 
-            composite_for_criterion = COMPOSITE_OPTIONS.get(criterion, {})
-            if any(selected in composite_for_criterion for selected in selected_values):
-                included = set()
-                for selected in selected_values:
-                    if selected in composite_for_criterion:
-                        included.update(composite_for_criterion[selected])
-                    else:
-                        included.add(selected)
-                filtered = [
-                    row
-                    for row in filtered
-                    if any(
-                        method_value in included or method_value in METHOD_FALLBACK_VALUES
-                        for method_value in _method_values(row, criterion)
-                    )
-                ]
-                continue
+    def _filtered_rows(self, selections, skip=None):
+        filtered = self.method_rows
+        for criterion, selected_values in selections.items():
+            if criterion != skip:
+                filtered = self._filter_by_criterion(filtered, criterion, selected_values)
+        return filtered
 
-            if criterion in ORDINAL_CRITERIA_ORDER:
-                order = ORDINAL_CRITERIA_ORDER[criterion]
-                selected_positions = [order.index(value) for value in selected_values if value in order]
-                if not selected_positions:
-                    continue
-                filtered = [
-                    row
-                    for row in filtered
-                    if any(
-                        method_value in METHOD_FALLBACK_VALUES
-                        or (
-                            method_value in order
-                            and any(order.index(method_value) >= selected_position for selected_position in selected_positions)
-                        )
-                        for method_value in _method_values(row, criterion)
-                    )
-                ]
-                continue
-
-            implied = IMPLIED_OPTIONS.get(criterion, {})
-
-            def matches(method_values):
-                if any(value in METHOD_FALLBACK_VALUES for value in method_values):
-                    return True
-                return any(
-                    all(c in method_values for c in implied[sel]) if sel in implied else sel in method_values
-                    for sel in selected_values
-                )
-
-            filtered = [row for row in filtered if matches(_method_values(row, criterion))]
-
-        suggestions = []
+    @staticmethod
+    def _unique_method_names(rows):
+        names = []
         seen_methods = set()
-        for row in filtered:
+        for row in rows:
             method_name = str(row.get("Method", "")).strip()
             if not method_name or method_name in seen_methods:
                 continue
             seen_methods.add(method_name)
-            suggestions.append(method_name)
-        return suggestions
+            names.append(method_name)
+        return names
+
+    def suggest_methods(self, criteria_row):
+        selections = self._active_selections(criteria_row)
+        return self._unique_method_names(self._filtered_rows(selections))
+
+    def suggest_near_misses(self, criteria_row):
+        """Methods passing the objective and every selected criterion but exactly one.
+
+        Returns [{"Method", "failed_criterion", "method_values", "selected_values"}], ordered by
+        FILTER_CRITERIA position of the failed criterion, then method-table order.
+        """
+        selections = self._active_selections(criteria_row)
+        strict = set(self._unique_method_names(self._filtered_rows(selections)))
+        found = {}
+        for criterion, selected_values in selections.items():
+            if criterion == "Objective":
+                continue
+            for row in self._filtered_rows(selections, skip=criterion):
+                name = str(row.get("Method", "")).strip()
+                if not name or name in strict or name in found:
+                    continue
+                found[name] = {
+                    "Method": name,
+                    "failed_criterion": criterion,
+                    "method_values": split_criterion_values(row.get(criterion, "")),
+                    "selected_values": selected_values,
+                }
+        return list(found.values())
 
 
 def _basic_method_string(text):

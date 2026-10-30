@@ -1,18 +1,13 @@
 import { criteria, criteriaOptionLabelMap, compositeOptions, impliedOptions, ordinalCriteriaOrder, hideCompositeConstituents, multipleAllowedCriteria } from './criteria.js';
+import { NO_SPECIFIC_CRITERION, strictMethods, nearMisses } from './filter_core.js';
 
-function expandImplied(key, vals) {
-  const implied = impliedOptions[key];
-  if (!implied) return vals;
-  const out = new Set(vals);
-  vals.forEach(v => (implied[v] || []).forEach(c => out.add(c)));
-  return [...out];
-}
 console.log("Filter.js loaded!");
 
 const siteBaseurl = JSON.parse(document.getElementById('site-baseurl').textContent);
 const objectiveCriteriaMap = JSON.parse(document.getElementById('objective-criteria-map').textContent);
 const choicesInstances = {};
 let currentFilteredMethods = [];
+let currentNearMisses = [];
 
 
 function updateCriteriaStatus() {
@@ -82,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // 1. Load method data
   const methodData = JSON.parse(document.getElementById('method-data').textContent);
 
-  const NO_SPECIFIC_CRITERION = "Model specific";
   const NO_SPECIFIC_VALUE = "No specific assumption";
 
   // 2. Define the criteria you want dropdowns for (column names from your TSV)
@@ -563,88 +557,129 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // 5. Filter and display methods
-  function filterMethods() {
-    let filtered = methodData;
-    const usedCriteriaKeys = getUsedCriteriaKeys();
+  function getSelections() {
+    const selections = {};
     criteria.forEach(criterion => {
-      if (!usedCriteriaKeys.includes(criterion.key)) return; // skip unused criteria
-        // ...existing code...
-        // ---------- REPLACE START (was: const val = document.getElementById(...).value) ----------
-        const selectEl = document.getElementById("filter-" + criterion.key);
-        if (!selectEl) return;
-        // collect selected values (exclude Any "" and __unsure__)
-        let selectedVals = [];
-        if (selectEl.multiple) {
-          selectedVals = Array.from(selectEl.selectedOptions)
-            .map(o => o.value)
-            .filter(v => v !== "" && v !== "__unsure__");
-        } else {
-          const v = selectEl.value;
-          if (v && v !== "__unsure__") selectedVals = [v];
-        }
-
-        // "No specific assumption" means the user imposes no restriction: keep all methods, including empty cells
-        const noRestriction = criterion.key === NO_SPECIFIC_CRITERION && selectedVals.includes(NO_SPECIFIC_VALUE);
-
-        // If nothing meaningful selected (Any / Unsure), skip filtering for this criterion
-        if (selectedVals.length === 0 || noRestriction) {
-          // do nothing (skip criterion)
-        } else {
-          // 1. Composite option logic (union of constituents for all selected composite opts)
-          if (compositeOptions[criterion.key]) {
-            const compositeForThis = compositeOptions[criterion.key];
-            const isAnyCompositeSelected = selectedVals.some(sv => compositeForThis[sv]);
-            if (isAnyCompositeSelected) {
-              const included = new Set();
-              // add constituents of selected composite options
-              selectedVals.forEach(sv => {
-                if (compositeForThis[sv]) {
-                  compositeForThis[sv].forEach(x => included.add(x));
-                } else {
-                  // also include explicitly selected non-composite options
-                  included.add(sv);
-                }
-              });
-              filtered = filtered.filter(m => {
-                if (!m[criterion.key]) return false;
-                const methodVals = expandImplied(criterion.key, m[criterion.key].split(",").map(x => x.trim()));
-                // accept if method has any included option or unknown/inapplicable
-                return methodVals.some(opt => included.has(opt) || opt === "Don't know" || opt === "Inapplicable");
-              });
-              // finished handling this criterion
-              return;
-            }
-          }
-
-          // 2. Ordinal logic: accept if method satisfies ANY selected threshold (union across selections)
-          if (ordinalCriteriaOrder[criterion.key]) {
-            const order = ordinalCriteriaOrder[criterion.key];
-            filtered = filtered.filter(m => {
-              if (!m[criterion.key]) return false;
-              const methodVals = m[criterion.key].split(",").map(x => x.trim());
-              return methodVals.some(opt => {
-                if (opt === "Don't know" || opt === "Inapplicable") return true;
-                return selectedVals.some(sv => order.indexOf(opt) >= order.indexOf(sv));
-              });
-            });
-            // finished handling this criterion
-            return;
-          }
-
-          // 3. Default logic (non-composite, non-ordinal): union — accept methods that have ANY selected value
-          const implied = impliedOptions[criterion.key] || {};
-          filtered = filtered.filter(m => {
-            if (!m[criterion.key]) return false;
-            const methodVals = expandImplied(criterion.key, m[criterion.key].split(",").map(x => x.trim()));
-            return methodVals.some(opt => opt === "Don't know" || opt === "Inapplicable")
-              || selectedVals.some(sv => implied[sv]
-                ? implied[sv].every(c => methodVals.includes(c))
-                : methodVals.includes(sv));
-          });
-        }
+      const selectEl = document.getElementById("filter-" + criterion.key);
+      if (!selectEl) return;
+      // collect selected values (exclude Any "" and __unsure__)
+      if (selectEl.multiple) {
+        selections[criterion.key] = Array.from(selectEl.selectedOptions)
+          .map(o => o.value)
+          .filter(v => v !== "" && v !== "__unsure__");
+      } else {
+        const v = selectEl.value;
+        selections[criterion.key] = v && v !== "__unsure__" ? [v] : [];
+      }
     });
+    return selections;
+  }
+
+  function filterMethods() {
+    const filtered = strictMethods(methodData, getSelections(), getUsedCriteriaKeys());
     currentFilteredMethods = filtered;
     displayMethods(filtered);
+    renderNearMisses(filtered);
+  }
+
+  function optionLabel(key, value) {
+    return criteriaOptionLabelMap[key]?.[value] || value;
+  }
+
+  // Near misses: methods failing exactly one selected criterion (strict results are untouched).
+  function nearMissFailure(entry, selections) {
+    const criterion = criteria.find(c => c.key === entry.failedKey);
+    const methodVals = (entry.method[entry.failedKey] || "").split(",").map(x => x.trim()).filter(Boolean);
+    return {
+      key: entry.failedKey,
+      label: criterion.label,
+      method: methodVals.map(v => optionLabel(entry.failedKey, v)).join(", "),
+      asked: selections[entry.failedKey].map(v => optionLabel(entry.failedKey, v)).join(", ")
+    };
+  }
+
+  function renderNearMisses(strict) {
+    const strictDiv = document.getElementById("filtered-methods");
+    if (!strictDiv) return;
+    let details = document.getElementById("near-misses");
+    const strictEmpty = strict.filter(m => m["Method"] && m["Method"].trim()).length === 0;
+    const selections = getSelections();
+    currentNearMisses = nearMisses(methodData, selections, getUsedCriteriaKeys())
+      .map(entry => ({ method: entry.method, failure: nearMissFailure(entry, selections) }));
+
+    if (currentNearMisses.length === 0 && !strictEmpty) {
+      if (details) details.remove();
+      return;
+    }
+    if (!details) {
+      details = document.createElement("details");
+      details.id = "near-misses";
+      details.className = "near-misses";
+      strictDiv.insertAdjacentElement("afterend", details);
+    }
+    // Expanded by default only when there is no strict result; collapse again once there is one
+    if (strictEmpty) {
+      details.open = true;
+      details.dataset.autoOpened = "1";
+    } else if (details.dataset.autoOpened) {
+      details.open = false;
+      delete details.dataset.autoOpened;
+    }
+
+    const summary = document.createElement("summary");
+    summary.append(`Near misses (${currentNearMisses.length})`);
+    const help = document.createElement("a");
+    help.href = `${siteBaseurl}/about#near-misses`;
+    help.target = "_blank";
+    help.rel = "noopener noreferrer";
+    help.title = "Near misses are methods failing exactly one of your criteria. They are not matches: check the failed criterion before using one. Click for details.";
+    help.style.marginLeft = "0.5em";
+    help.style.fontWeight = "normal";
+    help.textContent = "(?)";
+    // Following the link must not toggle the details element
+    help.addEventListener("click", e => e.stopPropagation());
+    summary.appendChild(help);
+    const note = document.createElement("p");
+    note.className = "near-misses-note";
+    note.textContent = strictEmpty
+      ? (currentNearMisses.length
+        ? "No method matches all criteria. These methods match all but one."
+        : "No method matches all criteria, and none matches all but one. Try relaxing some criteria.")
+      : "These methods do not match your criteria: each fails exactly one criterion and matches all the others.";
+    const list = document.createElement("ul");
+    list.className = "near-misses-list";
+    currentNearMisses.forEach(({ method, failure }) => {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = nearMissUrl(method);
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = method["Method"];
+      const tag = document.createElement("span");
+      tag.className = ordinalCriteriaOrder[failure.key] ? "ordinal-tag" : "multiple-tag";
+      tag.classList.add("near-miss-tag");
+      tag.textContent = `Fails: ${failure.label} (method: ${failure.method}, you asked: ${failure.asked})`;
+      li.append(link, tag);
+      list.appendChild(li);
+    });
+    details.replaceChildren(summary, note, list);
+  }
+
+  function nearMissUrl(m) {
+    const catDicts = JSON.parse(document.getElementById('cat-dicts').textContent);
+    const category = m["Category"] ? m["Category"].split(",")[0].trim() : "";
+    const subcat = m["Sub-category"] ? m["Sub-category"].split(",")[0].trim() : "";
+    const subcatLabel = Object.keys(catDicts.SUBCAT_FOLDER_MAP).find(k => catDicts.SUBCAT_FOLDER_MAP[k] === slugify(subcat)) || subcat;
+    const categoryLabel = (subcatLabel && catDicts.SUBCAT_PARENT[subcatLabel])
+      || Object.keys(catDicts.CATEGORY_FOLDER_MAP).find(k => catDicts.CATEGORY_FOLDER_MAP[k] === slugify(category))
+      || category;
+    const categoryFolder = catDicts.CATEGORY_FOLDER_MAP[categoryLabel] || slugify(categoryLabel);
+    const methodSlug = slugify(m["Method"]);
+    if (!subcatLabel) return `${siteBaseurl}/contents/methods/${categoryFolder}/${methodSlug}/`;
+    const subcatFolder = catDicts.SUBCAT_FOLDER_MAP[subcatLabel] || slugify(subcatLabel);
+    return m["Method"] === subcatLabel
+      ? `${siteBaseurl}/contents/methods/${categoryFolder}/${subcatFolder}/`
+      : `${siteBaseurl}/contents/methods/${categoryFolder}/${subcatFolder}/${methodSlug}/`;
   }
 
 
@@ -803,6 +838,16 @@ document.addEventListener('DOMContentLoaded', function() {
       rows.push(["Suggested method", category, method["Method"], ""]);
     });
 
+    // Near misses do NOT match all criteria: kept apart and labelled as such
+    if (currentNearMisses.length) {
+      rows.push([]);
+      rows.push(["Near miss (NOT a match)", "", "", "Methods below fail exactly one selected criterion; they are not part of the suggested methods above."]);
+      currentNearMisses.forEach(({ method, failure }) => {
+        const category = method["Category"] ? method["Category"].split(",")[0].trim() : "";
+        rows.push(["Near miss (NOT a match)", category, method["Method"], `Fails: ${failure.label} (method: ${failure.method}, you asked: ${failure.asked})`]);
+      });
+    }
+
     const csv = rows.map(row => row.map(csvCell).join(",")).join("\r\n");
     const blob = new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" });
     const link = document.createElement("a");
@@ -827,6 +872,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 8. Initial display
   displayMethods(methodData);
+  renderNearMisses(methodData);
   console.log("Initial methods displayed");
   updateCriteriaStatus();
   // });
