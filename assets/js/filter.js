@@ -598,6 +598,16 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   }
 
+  // In-page links to #near-misses open and scroll to the section (it only exists when shown)
+  document.addEventListener("click", e => {
+    const link = e.target.closest('a[href="#near-misses"]');
+    const target = document.getElementById("near-misses");
+    if (!link || !target) return;
+    e.preventDefault();
+    target.open = true;
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
   function renderNearMisses(strict) {
     const strictDiv = document.getElementById("filtered-methods");
     if (!strictDiv) return;
