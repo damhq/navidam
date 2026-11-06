@@ -1,0 +1,59 @@
+VSCODE Model: OpenCode Zen / Muse Spark 1.3 Contributor Free
+
+PASS 1--------------------------------------------------------------
+
+- I have to assess a lot of detection/attribution methods against a predefined set of criteria.
+- I have a big table in "DetectionAttribution methods - Method Assessment.tsv" with each method as row and criteria as columns. Some methods are already assessed (Status="Complete"). These complete assessements should help the AI to understand criteria and situate the new methods. Assessing an incomplete method (Status="Incomplete) means FILLING the corresponding table row's incomplete columns with the relevant criteria and categories options.
+
+
+INSTRUCTIONS:
+* Criteria are defined in /criteria individual pages and exact options for each criterion are in /assets/criteria.js.
+* Methods are also organized in categories  and subcategories described in _data/cat_dicts.json. Pick/complete best options when not already done, multiple choices allowed as for criteria.
+* Never invent a criterion value, use only the predefined options;
+* The "Model specific" column is special: If you believe strong new assumption deserves to be indicated here, you can write the new suggestion in the column and flag it in the "AI flag" column.
+* Flag ambiguous cases in the "AI flag" column;
+* Do not modify already validated method assessments (Status="Complete").
+* When a new method is assessed: turn the Status to "To review" and the "AI-assisted" column to "Yes"
+
+
+For each incomplete method (Status="Incomplete"):
+* Look for relevant resources with keywords in the folder XXX
+* Look online for additional relevant ressources
+* Update "DetectionAttribution methods - Method Assessment.tsv" file with new assessments: Suggest me the changes directly as usual
+* Update "DA_usedressources.tsv", i.e. the file listing for every AI-assessed method the used resources
+
+
+They are approximately 58 incomplete methods to assess, please complete this task overnight.
+
+
+Add "AI initial completion" in the column "Assessor" for all rows you assessed, i.e. rows with "AI-assisted=Yes" and modify code to do this automatically for eventual next iterartions
+
+
+If there is a name but assessment was empty, like for Best practice boxes and Power analyses, overwrite name with the "AI initial assessment" tag.
+
+
+PASS 2--------------------------------------------------------------
+
+
+- I have to CORRECT the assessments of some methods that were automatically assessed based on wrong resources.
+- I updated the correct resources that the AI should rely on in manual_resources.json and they were now also corrected in DA_usedresources.tsv.
+- I have a big table in "DetectionAttribution methods - Method Assessment.tsv" with each method as row and criteria as columns. Some methods are already assessed (Status="Complete"). Assessing a method means FILLING the corresponding table row's incomplete columns with the relevant criteria and categories options. This is what was done with the python script bulk_assessed_58.py
+
+
+INSTRUCTIONS:
+* Criteria are defined in /criteria individual pages and exact options for each criterion are in /assets/criteria.js.
+* Methods are also organized in categories  and subcategories described in _data/cat_dicts.json. Pick/complete best options when not already done, multiple choices allowed as for criteria.
+* Never invent a criterion value, use only the predefined options;
+* The "Model specific" column is special: If you believe strong new assumption deserves to be indicated here, you can write the new suggestion in the column and flag it in the "AI flag" column.
+* Flag ambiguous cases in the "AI flag" column;
+* Do not modify already validated method assessments (Status="Complete").
+* When a new method is assessed: turn the Status to "To review" and the "AI-assisted" column to "Yes"
+
+
+For each incomplete method in manual_resources.json:
+* Rely on the newly indicated resources to RE-ASSESS from scratch the methods
+* The new assessments should replace the assessments in script bulk_assessed_58.py for the target methods
+* Update "DetectionAttribution methods - Method Assessment.tsv" file with the corrected assessments: Suggest me the changes directly as usual
+* Update "DA_usedressources.tsv", i.e. the file listing for every AI-assessed method the used resources with the resource you actually used for the methods in manual_resources.sjon
+
+* They are, if I counted well, 47 incomplete methods to re-assess.
