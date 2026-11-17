@@ -28,3 +28,5 @@ jobs:
         run: python scripts/assessment_consensus.py
       - name: Build with Jekyll
         run: bundle exec jekyll build
+      - name: Check rendered pages
+        run: bundle exec ruby tests/test_site_rendering.rb

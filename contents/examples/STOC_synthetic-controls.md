@@ -438,7 +438,7 @@ As we did with the *Detection* objective, we will now go through the different c
 
 ## Perspectives
 
-We plan to further exploit {% cite reif2021 santini2017 %} to guide tests on:
+We plan to further exploit {% cite reif2021 santini2017assessing %} to guide tests on:
 - *i)* which bird species and populations, monitored with 
 - *ii)* which diversity metric, are sensitive to
 - *iii)* which landscape changes.
