@@ -33,10 +33,8 @@ layout: table_wrappers
               {{ content }}
             {% endif %}
           {% endcapture %}
-          {% assign content_parts = anchored_content | split: '</h1>' %}
-          {{ content_parts[0] }}</h1>
-          {% include criterion-type-tags.html %}
-          {{ content_parts[1] }}
+          {% capture heading_with_tags %}</h1>{% include criterion-type-tags.html %}{% endcapture %}
+          {{ anchored_content | replace_first: '</h1>', heading_with_tags }}
 
           {% if page.has_toc != false %}
             {% include components/children_nav.html %}
