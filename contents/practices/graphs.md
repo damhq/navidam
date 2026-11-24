@@ -63,7 +63,7 @@ Real threats to correct effect estimation arise when confounding sources are kno
 
 #### Colliders
 {: .no_toc }
-Conversely, a path containing a *collider* should **not** be adjusted to avoid introducing a *selection bias*, see {% cite munafo2018 --style _bibliography/narrative %}.
+Conversely, a path containing a *collider* should **not** be adjusted to avoid introducing a *selection bias*, see {% cite munafo2018collider --style _bibliography/narrative %}.
 
 
 ```mermaid
@@ -115,7 +115,7 @@ style C fill:#fe85be,stroke:#333;
 >
 > - Packages and tools like dagitty {% cite ankan2021 %} allow identifying automatically which variables should be adjusted for a given estimand.
 > 
-> - {% cite cinelli2020b --style _bibliography/narrative %} introduces more complex situations to improve understanding of controls and develop intuition.
+> - {% cite cinelli2020crash --style _bibliography/narrative %} introduces more complex situations to improve understanding of controls and develop intuition.
 >
 > - A *ggdag* vignette further introducing [common structures of bias](https://cran.r-project.org/web/packages/ggdag/vignettes/bias-structures.html){:target="_blank"}.
 
@@ -124,7 +124,7 @@ style C fill:#fe85be,stroke:#333;
 {: .highlight-title }
 > Table 2 fallacy
 > 
-> A now-famous pitfall in effect estimation is interpreting every coefficient from a fitted model as causal {% cite westreich2013 %}. The name comes from the condemned habit of reporting every variable coefficient in the second table of a research article, with the first table describing the dataset.
+> A now-famous pitfall in effect estimation is interpreting every coefficient from a fitted model as causal {% cite westreich2013table %}. The name comes from the condemned habit of reporting every variable coefficient in the second table of a research article, with the first table describing the dataset.
 
     
 ## Variable selection
