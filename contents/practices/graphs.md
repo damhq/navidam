@@ -3,6 +3,8 @@ layout: baserefs
 title: "A primer on causal graphs"
 parent: "Good practices"
 nav_order: 1
+date: 2025-06-23
+author: Joaquim Estopinan
 categories:
 - practices
 ---
@@ -27,7 +29,7 @@ Causal graphs depict the assumed process underlying the generation of the analys
 ## Adjustment before effect estimation
 
 ### Principle
-The availability of large amounts of observational data has paved the way for breakthrough statistical modelling approaches. However, it is also subject to many biases, such as observation effort, detection bias and any potential confounding variables affecting both the tested variable and the response. This is why, when it comes to estimating causal effects, the scientific community has adopted a set of rules and assumptions for causal inference that, when adhered to, enable unbiased estimation. Within the Structural Causal Model (SCM, see [Causal paradigms]({% link contents/practices/paradigms.md %})), these rules belong to a general theory called *do-Calculus* and developed by Judea Pearl in 1995 {% cite pearl1995 %}. See {% cite entrop2024 --style _bibliography/narrative %} for an introductory blog post.
+The availability of large amounts of observational data has paved the way for breakthrough statistical modelling approaches. However, it is also subject to many biases, such as observation effort, detection bias and any potential confounding variables affecting both the tested variable and the response. This is why, when it comes to estimating causal effects, the scientific community has adopted a set of rules and assumptions for causal inference that, when adhered to, enable unbiased estimation. Within the Structural Causal Model (SCM), these rules belong to a general theory called *do-Calculus* and developed by Judea Pearl in 1995 {% cite pearl1995 %}. See {% cite entrop2024 --style _bibliography/narrative %} for an introductory blog post.
 The **backdoor criterion** is the most widespread identification tool derived from this theory. When targeting a total effect, it involves blocking all *backdoor paths* between the treatment and response variables.
 
 

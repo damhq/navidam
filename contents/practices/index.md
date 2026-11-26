@@ -1,6 +1,7 @@
 ---
 title: "Good practices"
 nav_order: 5
+contribution_sections: practices
 permalink: /practices
 categories:
 - practices

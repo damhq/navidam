@@ -34,7 +34,6 @@
     <tr><td colspan="3" style="text-align:center"><strong>Example pages</strong></td></tr>
     <tr><td><span class="label coverage-status-online">Online</span></td><td>{{ cov.ex.online }}</td><td>{% if ex_total > 0 %}{{ cov.ex.online | times: 100.0 | divided_by: ex_total | round: 2 }}%{% endif %}</td></tr>
     <tr><td><span class="label doc-status-assigned">Planned</span></td><td>{{ cov.ex.planned }}</td><td>{% if ex_total > 0 %}{{ cov.ex.planned | times: 100.0 | divided_by: ex_total | round: 2 }}%{% endif %}</td></tr>
-    <tr><td><span class="label doc-status-to-do">To do</span></td><td>{{ cov.ex.todo }}</td><td>{% if ex_total > 0 %}{{ cov.ex.todo | times: 100.0 | divided_by: ex_total | round: 2 }}%{% endif %}</td></tr>
     <tr><td><em>Total</em></td><td><em>{{ ex_total }}</em></td><td><em>{% if ex_total > 0 %}100.00%{% endif %}</em></td></tr>
   </tbody>
 </table>

@@ -39,6 +39,10 @@ layout: table_wrappers
           {% if page.has_toc != false %}
             {% include components/children_nav.html %}
           {% endif %}
+          {% if page.contribution_sections %}
+            <h2>Where help is needed</h2>
+            {% include contribution_lists.html group=page.contribution_sections %}
+          {% endif %}
         </main>
         {% include components/footer.html %}
       </div>
