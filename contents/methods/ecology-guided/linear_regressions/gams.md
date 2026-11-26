@@ -46,19 +46,19 @@ As with collinearity in GLMs, GAMs can suffer from identifiability issues due to
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite hastie1986generalized  --style _bibliography/narrative %}
-- {% cite hastie1992generalized  --style _bibliography/narrative %}
-- {% cite fewster2000analysis  --style _bibliography/narrative %}
+- {% cite_resource hastie1986generalized  --style _bibliography/narrative %}
+- {% cite_resource hastie1992generalized  --style _bibliography/narrative %}
+- {% cite_resource fewster2000analysis  --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
 
-- {% cite park2008quantitative  --style _bibliography/narrative %}
-- {% cite frescino2001modeling  --style _bibliography/narrative %}
-- {% cite opsomer2007modelassisted  --style _bibliography/narrative %}
-- {% cite wang2017application  --style _bibliography/narrative %}
+- {% cite_resource park2008quantitative  --style _bibliography/narrative %}
+- {% cite_resource frescino2001modeling  --style _bibliography/narrative %}
+- {% cite_resource opsomer2007modelassisted  --style _bibliography/narrative %}
+- {% cite_resource wang2017application  --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
@@ -66,10 +66,10 @@ As with collinearity in GLMs, GAMs can suffer from identifiability issues due to
 optional
 {: .label}
 
-- {% cite guisan2002generalized  --style _bibliography/narrative %}
-- {% cite suarez-seoane2002largescale  --style _bibliography/narrative %}
-- {% cite dimarco2023elevational  --style _bibliography/narrative %}
-- {% cite conenna2021global  --style _bibliography/narrative %}
+- {% cite_resource guisan2002generalized  --style _bibliography/narrative %}
+- {% cite_resource suarez-seoane2002largescale  --style _bibliography/narrative %}
+- {% cite_resource dimarco2023elevational  --style _bibliography/narrative %}
+- {% cite_resource conenna2021global  --style _bibliography/narrative %}
 
 ## Implementation 
 

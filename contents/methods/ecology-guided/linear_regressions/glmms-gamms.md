@@ -86,19 +86,19 @@ Since their introduction, GLMMs and GAMMs became nearly ubiquitous in ecology an
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite caughlin2016integrating  --style _bibliography/narrative %}
-- {% cite rickbeil2018changing  --style _bibliography/narrative %}
-- {% cite saunders2022unraveling  --style _bibliography/narrative %}
-- {% cite sommerfeld2018patterns  --style _bibliography/narrative %}
-- {% cite stevens-rumann2018evidence  --style _bibliography/narrative %}
+- {% cite_resource caughlin2016integrating  --style _bibliography/narrative %}
+- {% cite_resource rickbeil2018changing  --style _bibliography/narrative %}
+- {% cite_resource saunders2022unraveling  --style _bibliography/narrative %}
+- {% cite_resource sommerfeld2018patterns  --style _bibliography/narrative %}
+- {% cite_resource stevens-rumann2018evidence  --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite benitez-lopez2010impacts  --style _bibliography/narrative %}
-- {% cite falaschi2025differences  --style _bibliography/narrative %}
-- {% cite ingersoll2016effects  --style _bibliography/narrative %}
-- {% cite santini2018global  --style _bibliography/narrative %}
-- {% cite venter2018bias  --style _bibliography/narrative %}
+- {% cite_resource benitez-lopez2010impacts  --style _bibliography/narrative %}
+- {% cite_resource falaschi2025differences  --style _bibliography/narrative %}
+- {% cite_resource ingersoll2016effects  --style _bibliography/narrative %}
+- {% cite_resource santini2018global  --style _bibliography/narrative %}
+- {% cite_resource venter2018bias  --style _bibliography/narrative %}
 
 ## Implementation 
 

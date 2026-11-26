@@ -44,29 +44,27 @@ for model testing and comparison.
 
 ## Major variants
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 GLMs can be used for many different applications with different variants
 of the linear predictor.
 
 ## Further online resources
 {: .no_toc }
-GLM: <https://online.stat.psu.edu/stat504/lesson/6/6.1>,
-<https://medium.com/@sahin.samia/a-comprehensive-introduction-to-generalized-linear-models-fd773d460c1d>
+GLM:
+- [https://online.stat.psu.edu/stat504/lesson/6/6.1](https://online.stat.psu.edu/stat504/lesson/6/6.1){:target="_blank"},
+- [https://medium.com/@sahin.samia/a-comprehensive-introduction-to-generalized-linear-models-fd773d460c1d](https://medium.com/@sahin.samia/a-comprehensive-introduction-to-generalized-linear-models-fd773d460c1d){:target="_blank"}
 
-GEEs: <https://online.stat.psu.edu/stat504/lesson/12/12.1>
+GEEs: [https://online.stat.psu.edu/stat504/lesson/12/12.1](https://online.stat.psu.edu/stat504/lesson/12/12.1){:target="_blank"}
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite myers1997 --style _bibliography/narrative_full %}
+- {% cite_resource myers1997tutorial --style _bibliography/narrative %}
 
-- {% cite mcculloch2000 --style _bibliography/narrative_full %}
+- {% cite_resource mcculloch2000generalized --style _bibliography/narrative %}
 
-- {% cite ballinger2004 --style _bibliography/narrative_full %}
+- {% cite_resource ballinger2004using --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
@@ -74,26 +72,26 @@ GEEs: <https://online.stat.psu.edu/stat504/lesson/12/12.1>
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
 
-- {% cite guisan2002generalized --style _bibliography/narrative_full %}
+- {% cite_resource guisan2002generalized --style _bibliography/narrative %}
 
-- {% cite miller2002 --style _bibliography/narrative_full %}
+- {% cite_resource miller2002modeling --style _bibliography/narrative %}
 
-- {% cite hawkes2021 --style _bibliography/narrative_full %}
+- {% cite_resource hawkes2021effects --style _bibliography/narrative %}
 
-- {% cite lieske2009 --style _bibliography/narrative_full %}
+- {% cite_resource lieske2009accounting --style _bibliography/narrative %}
 
-- {% cite pirotta2014 --style _bibliography/narrative_full %}
+- {% cite_resource pirotta2014scaledependent --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- GLM and GEE: statsmodels-package
+- GLM and GEE: [statsmodels](https://www.statsmodels.org/){:target="_blank"}
 
 #### R
 {: .no_toc }
-- GLM: stats-package
+- GLM: [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html){:target="_blank"}
 
-- GEE: geepack-package
+- GEE: [geepack](https://cran.r-project.org/package=geepack){:target="_blank"}
 
 ## Assessment table

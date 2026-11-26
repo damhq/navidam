@@ -49,9 +49,8 @@ Use the **Method assessment** issue template for both cases. Assessments positio
 
 What happens next: a pull request is opened automatically. New rows are added directly; revisions are listed as old → new suggestions to accept or reject. A maintainer reviews and may ask for clarification in the issue thread. Nothing is published before the pull request is merged. If you edit your issue, your assessment is updated rather than counted twice. Likewise, only **one assessment per method and author name** is kept: submitting again under the same name (case-insensitive) replaces your previous assessment of that method. The author field is required: tick *Anonymous contribution* to keep your name off the website (it then appears as *Anonymous*). Only a short non-reversible key of the name is stored, so an anonymous re-submission under the same name still replaces your earlier assessment. The GitHub issue itself is public and keeps what you typed, so use a consistent pseudonym if you want to stay unidentifiable.
 
-<details markdown="1">
+<details markdown="1" id="assessment-status">
 <summary><strong>How assessments are combined: Consensus / Debated status</strong></summary>
-<a id="assessment-status"></a>
 
 Several people can assess the same method. Each method page then shows a status badge next to the assessor line, a ⚠️ next to debated criteria in the assessment table, and a collapsible breakdown listing every assessor's answer per criterion.
 
@@ -89,6 +88,14 @@ The method page header lists **all assessors** (legacy ones included), and the *
 Anonymous assessors appear as *Anonymous* on the website, and no issue numbers are shown. The issue and pull request themselves are still created from your GitHub account and are visible to anyone on GitHub.
 
 </details>
+
+<script>
+  (() => {
+    if (window.location.hash !== "#assessment-status") return;
+    const details = document.getElementById("assessment-status");
+    if (details instanceof HTMLDetailsElement) details.open = true;
+  })();
+</script>
 
 <a id="document-method"></a>
 ## 2. Document a method (new or completion) 📝

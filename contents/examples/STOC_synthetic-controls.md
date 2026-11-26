@@ -1,4 +1,5 @@
 ---
+layout: example
 title: "STOC & land cover changes"
 parent: Examples
 nav_order: 1

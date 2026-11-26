@@ -37,8 +37,8 @@ The success of this method has also led to numerous variants. We can cite among 
 - Finally, a number of recent developement merge the SC method with other approaches:
     - **Generalized SC** relaxes the parallel trend assumption and unifies the SC method with linear fixed effects models {% cite xu2017 %}
     - **Synthetic Diff-in-diffs** combines SCs with the difference-in-differences estimator {% cite arkhangelsky2021 %}
-    - {% cite chernozhukov2021 --style _bibliography/narrative %} exploit conformal prediction and structural breaks in conjunction with SCs
-    - {% cite imai2023 --style _bibliography/narrative %} developped a flexible estimation procedure combining matching and SCs ideas with diff-and-diffs.
+    - {% cite_resource chernozhukov2021 --style _bibliography/narrative %} exploit conformal prediction and structural breaks in conjunction with SCs
+    - {% cite_resource imai2023 --style _bibliography/narrative %} developped a flexible estimation procedure combining matching and SCs ideas with diff-and-diffs.
 
 
 
@@ -59,16 +59,16 @@ An updated review paper positioning the method by its original author: {% cite a
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite fick2021  --style _bibliography/narrative %}
-- {% cite sharma2023  --style _bibliography/narrative %}
-- {% cite rana2019  --style _bibliography/narrative %}
-- {% cite west2020  --style _bibliography/narrative %}
+- {% cite_resource fick2021  --style _bibliography/narrative %}
+- {% cite_resource sharma2023  --style _bibliography/narrative %}
+- {% cite_resource rana2019  --style _bibliography/narrative %}
+- {% cite_resource west2020  --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite lepissier2021  --style _bibliography/narrative %}
-- {% cite nakanishi2022  --style _bibliography/narrative %}
-- {% cite kaiser2026synthetic  --style _bibliography/narrative %}
+- {% cite_resource lepissier2021  --style _bibliography/narrative %}
+- {% cite_resource nakanishi2022  --style _bibliography/narrative %}
+- {% cite_resource kaiser2026synthetic  --style _bibliography/narrative %}
 
 ## Implementation 
 

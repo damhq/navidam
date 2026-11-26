@@ -50,24 +50,24 @@ The [rEDM package documentations](https://ha0ye.github.io/rEDM/articles/rEDM.htm
 ### Method
 {: .no_toc }
 
-- {% cite sugihara2012detecting --style _bibliography/narrative_full %}
-- {% cite wang2021convergent --style _bibliography/narrative_full %}
+- {% cite_resource sugihara2012detecting --style _bibliography/narrative_full %}
+- {% cite_resource wang2021convergent --style _bibliography/narrative_full %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite wang2018detecting --style _bibliography/narrative_full %}
-- {% cite rigal2023farmland --style _bibliography/narrative_full %}
-- {% cite diaz2022inferring --style _bibliography/narrative_full %} [not in Ecology]
+- {% cite_resource wang2018detecting --style _bibliography/narrative_full %}
+- {% cite_resource rigal2023farmland --style _bibliography/narrative_full %}
+- {% cite_resource diaz2022inferring --style _bibliography/narrative_full %} [not in Ecology]
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite matsuzaki2018bottomup --style _bibliography/narrative_full %}
-- {% cite wang2020causala --style _bibliography/narrative_full %}
-- {% cite ye2019functional --style _bibliography/narrative_full %}
-- {% cite tsonis2015dynamical --style _bibliography/narrative_full %} [not in Ecology]
+- {% cite_resource matsuzaki2018bottomup --style _bibliography/narrative_full %}
+- {% cite_resource wang2020causala --style _bibliography/narrative_full %}
+- {% cite_resource ye2019functional --style _bibliography/narrative_full %}
+- {% cite_resource tsonis2015dynamical --style _bibliography/narrative_full %} [not in Ecology]
 
 ## Implementation
 

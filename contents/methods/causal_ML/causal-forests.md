@@ -53,24 +53,24 @@ A more recent variant that focuses on improving the accuracy of treatment effect
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite athey2016recursive --style _bibliography/narrative %}
-- {% cite athey2019generalized --style _bibliography/narrative %}
-- {% cite jawadekar2023practical --style _bibliography/narrative %}
-- {% cite rehill2024how --style _bibliography/narrative %}
-- {% cite arif2025estimating --style _bibliography/narrative %}
+- {% cite_resource athey2016recursive --style _bibliography/narrative %}
+- {% cite_resource athey2019generalized --style _bibliography/narrative %}
+- {% cite_resource jawadekar2023practical --style _bibliography/narrative %}
+- {% cite_resource rehill2024how --style _bibliography/narrative %}
+- {% cite_resource arif2025estimating --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite defries2022improved --style _bibliography/narrative %}: Direct example of combining remote sensing outcomes with causal-forest estimation to infer treatment effects on forest condition in the Amazon (socio-ecological study)
+- {% cite_resource defries2022improved --style _bibliography/narrative %}: Direct example of combining remote sensing outcomes with causal-forest estimation to infer treatment effects on forest condition in the Amazon (socio-ecological study)
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite arif2025estimating --style _bibliography/narrative %}: Applied case study of causal forests: What is the effect of depth on Laminaria digitata across Atlantic Canada?
-- {% cite hodler2023institutions --style _bibliography/narrative %}: Large-N econometric application showing how causal forests are used for spatial heterogeneity and policy effect heterogeneity (Economics rather than Ecology)
-- {% cite crommelynck2025fiscal --style _bibliography/narrative %}: Protection effect on population and fiscal outcomes. Combined with difference-in-difference and matching approaches (socio-economic study)
+- {% cite_resource arif2025estimating --style _bibliography/narrative %}: Applied case study of causal forests: What is the effect of depth on Laminaria digitata across Atlantic Canada?
+- {% cite_resource hodler2023institutions --style _bibliography/narrative %}: Large-N econometric application showing how causal forests are used for spatial heterogeneity and policy effect heterogeneity (Economics rather than Ecology)
+- {% cite_resource crommelynck2025fiscal --style _bibliography/narrative %}: Protection effect on population and fiscal outcomes. Combined with difference-in-difference and matching approaches (socio-economic study)
 
 
 ## Implementation 

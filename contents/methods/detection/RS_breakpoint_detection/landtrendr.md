@@ -39,40 +39,38 @@ roughly three to four times as many observations as the maximum number
 of periods you wish the algorithm to discriminate.
 
 ## Major variants
-
 {: .no_toc }
 {: .d-inline-block }
 optional
 {: .label}
 
 ## Further online resources
-
 {: .no_toc }
-<https://openmrv.org/web/guest/w/modules/mrv/modules_2/landtrendr>
+[https://openmrv.org/web/guest/w/modules/mrv/modules_2/landtrendr](https://openmrv.org/web/guest/w/modules/mrv/modules_2/landtrendr){:target="_blank"}
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite kennedy2010 --style _bibliography/narrative_full %}
+- {% cite_resource kennedy2010detecting --style _bibliography/narrative %}
 
-- {% cite kennedy2018 --style _bibliography/narrative_full %}
+- {% cite_resource kennedy2018implementation --style _bibliography/narrative %}
 
-- {% cite kennedy2023 --style _bibliography/narrative_full %}
+- {% cite_resource kennedy2024interpreting --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite yang2018 --style _bibliography/narrative_full %}
+- {% cite_resource yang2018detecting --style _bibliography/narrative %}
 
-- {% cite cohen2018 --style _bibliography/narrative_full %}
+- {% cite_resource cohen2018landtrendr --style _bibliography/narrative %}
 
-- {% cite zhu2019 --style _bibliography/narrative_full %}
+- {% cite_resource zhu2019longterm --style _bibliography/narrative %}
 
-- {% cite parracciani2024 --style _bibliography/narrative_full %}
+- {% cite_resource parracciani2024land --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
@@ -81,9 +79,8 @@ optional
 
 #### Python
 {: .no_toc }
-- lt-gee-py (Python interface to the Google Earth Engine implementation
-  of the LandTrendr spectral-temporal segmentation algorithm),
-  <https://pypi.org/project/lt-gee-py/>
+- [lt-gee-py](https://pypi.org/project/lt-gee-py/){:target="_blank"} (Python interface to the Google Earth Engine implementation
+  of the LandTrendr spectral-temporal segmentation algorithm)
 
 - The LandTrendr class from lt-gee-py is a light wrapper around the
   Google Earth Engine API that includes convenience methods to generate
@@ -92,8 +89,7 @@ optional
 
 #### R
 {: .no_toc }
-- LandTrendR-Package,
-  <https://github.com/IFGI-Project/LandTendR-Package>
+- [LandTrendR-Package](https://github.com/IFGI-Project/LandTendR-Package){:target="_blank"}
 
 - The package help users to run Landtrendr Algorithm in R, this package
   use GEE python API and requires the user to have a GEE account. The
@@ -104,6 +100,6 @@ optional
 
 ### Code Cells
 {: .no_toc }
-<https://github.com/eMapR/LT-GEE>
+[https://github.com/eMapR/LT-GEE](https://github.com/eMapR/LT-GEE){:target="_blank"}
 
 ## Assessment table

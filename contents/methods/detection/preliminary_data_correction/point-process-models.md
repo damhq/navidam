@@ -42,7 +42,7 @@ likelihood with quadrature points.
 ### Method
 {: .no_toc }
 
-- {% cite renner2015 --style _bibliography/narrative_full %}
+- {% cite_resource renner2015point --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
@@ -50,18 +50,18 @@ likelihood with quadrature points.
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
 
-- {% cite martino2021 --style _bibliography/narrative_full %}
+- {% cite_resource martino2021integration --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- statsmodels-package for full model and pointpats-package for
+- [statsmodels](https://www.statsmodels.org/){:target="_blank"} for full model and [pointpats](https://pysal.org/pointpats/){:target="_blank"} for
   exploratory analysis
 
 #### R
 {: .no_toc }
-- stats-package for GLMs and spatstat-package specifically for point
+- [stats](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/00Index.html){:target="_blank"} for GLMs and [spatstat](https://cran.r-project.org/package=spatstat){:target="_blank"} specifically for point
   process models
 
 ## Assessment table

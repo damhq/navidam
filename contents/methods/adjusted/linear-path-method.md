@@ -36,11 +36,7 @@ include indices of the importance of specific paths or pathways
 supported links in the model.
 
 ## Major variants
-
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 Linear path models are a special case of structural equation models
 (SEM). SEMs can in addition include latent variables and structures that
 are not directly observed but estimated based on data. In ecology,
@@ -50,53 +46,52 @@ more flexibly adapted to data specificity and the approach may require
 lower sample sizes.
 
 ## Further online resources
-
 {: .no_toc }
-[https://www.regorz-statistik.de/blog/semblog.html](https://www.regorz-statistik.de/blog/semblog.html)
+- [https://www.regorz-statistik.de/blog/semblog.html](https://www.regorz-statistik.de/blog/semblog.html){:target="_blank"}
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite doi1023072389745 --style _bibliography/narrative_full %}
+- {% cite_resource mitchell1992testing --style _bibliography/narrative %}
 
-- {% cite doi101186s1371701600633 --style _bibliography/narrative_full %}
+- {% cite_resource fan2016applications --style _bibliography/narrative %}
 
-- {% cite doi101016jpedobi201503002 --style _bibliography/narrative_full %}
+- {% cite_resource eisenhauer2015patterns --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite doi1010882752664xad87f9 --style _bibliography/narrative_full %}
+- {% cite_resource gomarasca2024satellite --style _bibliography/narrative %}
 
-- {% cite doi101111ejss12446 --style _bibliography/narrative_full %}
+- {% cite_resource angelini2017multivariate --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite doi1011111365243513393 --style _bibliography/narrative_full %}
+- {% cite_resource martinez-almoyna2019multitrophic --style _bibliography/narrative %}
 
-- {% cite doi101111geb70093 --style _bibliography/narrative_full %}
+- {% cite_resource goury2025role --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- Semopy
+- [Semopy](https://semopy.com/){:target="_blank"}
 
-- [https://www.datacamp.com/tutorial/structural-equation-modeling](https://www.datacamp.com/tutorial/structural-equation-modeling)
+- [https://www.datacamp.com/tutorial/structural-equation-modeling](https://www.datacamp.com/tutorial/structural-equation-modeling){:target="_blank"}
 
 #### R
 {: .no_toc }
-- lavaan (for analysis)
+- [lavaan](https://cran.r-project.org/package=lavaan){:target="_blank"} (for analysis)
 
-- sem
+- [sem](https://cran.r-project.org/package=sem){:target="_blank"}
 
-- semPlot (for plotting)
+- [semPlot](https://cran.r-project.org/package=semPlot){:target="_blank"} (for plotting)
 
-- [https://stats.oarc.ucla.edu/r/seminars/rsem/](https://stats.oarc.ucla.edu/r/seminars/rsem/)
+- [https://stats.oarc.ucla.edu/r/seminars/rsem/](https://stats.oarc.ucla.edu/r/seminars/rsem/){:target="_blank"}
 
 ### Code Cells
 {: .no_toc }

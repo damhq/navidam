@@ -30,9 +30,6 @@ defined.
 
 ## Major variants
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 Common variants are support vector machines, Gaussian processes, kernel
 density estimator and principal component analysis (PCA).
 
@@ -41,7 +38,7 @@ density estimator and principal component analysis (PCA).
 ### Method
 {: .no_toc }
 
-- {% cite muller2018 --style _bibliography/narrative_full %}
+- {% cite_resource muller2002introduction --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
@@ -49,23 +46,23 @@ density estimator and principal component analysis (PCA).
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
 
-- {% cite mountrakis2011 --style _bibliography/narrative_full %}
+- {% cite_resource mountrakis2011support --style _bibliography/narrative %}
 
-- {% cite fieberg2007 --style _bibliography/narrative_full %}
+- {% cite_resource fieberg2007kernel --style _bibliography/narrative %}
 
-- {% cite wang2025 --style _bibliography/narrative_full %}
+- {% cite_resource wang2025role --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- scikit-learn-package
+- [scikit-learn](https://scikit-learn.org/){:target="_blank"}
 
 - commonly python is preferred over R in kernel methods which are
   applied in machine learning
 
 #### R
 {: .no_toc }
-- caret- and tidymodels-package
+- [caret](https://cran.r-project.org/package=caret){:target="_blank"} and [tidymodels](https://www.tidymodels.org/){:target="_blank"}
 
 ## Assessment table

@@ -19,7 +19,7 @@ EXPECTED_METHOD_SETS = {
         "Dynamical footprint analysis (Cano et al. 2025)",
     },
     "DiD & BACI": {"DiD & BACI"},
-    "SEMs": {"SEMs"},
+    "Structural equation modelling (SEM)": {"Structural equation modelling (SEM)"},
     "Synthetic controls": {"Synthetic controls"},
     "CCM": {"CCM"},
     "RCTs": {"RCTs", "Randomised saturation designs"},

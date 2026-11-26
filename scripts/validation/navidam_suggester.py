@@ -130,7 +130,7 @@ METHOD_FALLBACK_VALUES = {"Don't know", "Inapplicable"}
 METHOD_CONCEPT_PATTERNS = [
     ("Instrumental variables", [r"\binstrumental variables?\b", r"\biv\b"]),
     ("Gradient / Stratified analyses", [r"\bgradient\b", r"\bstratified analys(?:is|es)\b"]),
-    ("SEMs", [r"\bstructural equation models?\b", r"\bsems?\b"]),
+    ("Structural equation modelling (SEM)", [r"\bstructural equation models?\b", r"\bsems?\b"]),
     ("GLMs, GEEs", [r"\bglms?\b", r"\bgees?\b", r"\bgeneralized linear models?\b", r"\bgeneralized estimating equations?\b"]),
     ("GAMs", [r"\bgams?\b", r"\bgeneralized additive models?\b"]),
     ("GLMMs, GAMMs", [r"\bglmms?\b", r"\bgamms?\b", r"\bgeneralized linear mixed models?\b", r"\bgeneralized additive mixed models?\b"]),

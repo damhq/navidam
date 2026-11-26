@@ -72,8 +72,8 @@ affect the mediator-outcome relationship.
 ### Method
 {: .no_toc }
 
-- {% cite arif2023applying --style _bibliography/narrative_full %}
-- {% cite bellemare2024paper --style _bibliography/narrative_full %}
+- {% cite_resource arif2023applying --style _bibliography/narrative_full %}
+- {% cite_resource bellemare2024paper --style _bibliography/narrative_full %}
 
 
 ### Research applications

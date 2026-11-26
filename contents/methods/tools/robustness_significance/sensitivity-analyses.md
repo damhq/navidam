@@ -33,11 +33,7 @@ correctly is also more important for the simulations than calibrating
 less sensitive parameters correctly.
 
 ## Major variants
-
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 One can differentiate between local sensitivity analysis and global
 sensitivity analysis. In local sensitivity analysis, input parameters
 are varied over a small range of values around specific reference values
@@ -52,7 +48,6 @@ regression methods from observational data analyses can be used to
 identify parameter importance.
 
 ## Further online resources
-
 {: .no_toc }
 
 ## Reference articles
@@ -60,13 +55,13 @@ identify parameter importance.
 ### Method
 {: .no_toc }
 
-- {% cite doi1010020470870958 --style _bibliography/narrative_full %}
+- {% cite_resource saltelli2002sensitivity --style _bibliography/narrative %}
 
-- {% cite doi101016jecolmodel200510045 --style _bibliography/narrative_full %}
+- {% cite_resource cariboni2007role --style _bibliography/narrative %}
 
-- {% cite doi101016jenvsoft2024105977 --style _bibliography/narrative_full %}
+- {% cite_resource tarantola2024annotated --style _bibliography/narrative %}
 
-- {% cite doi1010022015wr017559 --style _bibliography/narrative_full %}
+- {% cite_resource razavi2016new --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
@@ -76,19 +71,19 @@ identify parameter importance.
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite doi1011111365266413044 --style _bibliography/narrative_full %}
+- {% cite_resource manlik2018applicability --style _bibliography/narrative %}
 
-- {% cite doi101051mmnp201611405 --style _bibliography/narrative_full %}
+- {% cite_resource tenbroeke2016detecting --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- SALib
+- [SALib](https://salib.readthedocs.io/){:target="_blank"}
 
 #### R
 {: .no_toc }
-- ‘sensitivity’
+- [sensitivity](https://cran.r-project.org/package=sensitivity){:target="_blank"}
 
 ### Code Cells
 {: .no_toc }

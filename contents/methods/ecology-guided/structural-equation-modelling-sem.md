@@ -1,9 +1,9 @@
 ---
 layout: method
-title: "SEMs"
+title: "Structural equation modelling (SEM)"
 parent: "Ecology-guided Modelling"
 date: 2025-11-19
-author: Pierre Gaüzère, CNRS, reviewed by Cyrille Violle
+author: Pierre Gaüzère, CNRS, reviewed by Cyrille Violle and Miriam Beck
 ---
 <!-- This file was auto-generated from _data/Attribution methods - Method Assessment.tsv -->
 
@@ -28,141 +28,133 @@ multiple drivers (e.g. climate, land use, soil, management) jointly
 influence biodiversity, ecosystem functions, or species traits, while
 distinguishing direct effects and indirect effects transmitted through
 intermediate variables (mediators). A SEM typically consists of two
-parts. A structural model, which specifies regressions among variables
-(observed or latent), and a measurement model, which links latent
-variables (e.g. “habitat quality”, “disturbance intensity”) to observed
-indicators (e.g. vegetation structure, NDVI, grazing proxies). SEM
-differs from standard multiple regression by (i) allowing multiple
-responses and feedback structures in a single model, (ii) including
-latent variables, which represent unobserved constructs measured by
-multiple indicators, (iii) providing a global test of whether the
-hypothesized causal structure is consistent with the data (model fit),
-(iv) explicitly partitioning effects into direct, indirect and total
-effects.This explicit decomposition of total effects into direct and
+parts:
+
+1. A structural model, which specifies regressions among variables
+   (observed or latent), and
+2. A measurement model, which links latent variables (e.g. “habitat
+   quality”, “disturbance intensity”) to observed indicators (e.g.
+   vegetation structure, NDVI, grazing proxies).
+
+SEM
+differs from standard multiple regression by
+1. allowing multiple responses and feedback structures in a single model,
+2. including latent variables, which represent unobserved constructs measured by
+   multiple indicators,
+3. providing a global test of whether the hypothesized causal structure is consistent with the data (model fit),
+4. explicitly partitioning effects into direct, indirect and total effects.
+
+This explicit decomposition of total effects into direct and
 indirect effects is what makes SEM particularly suitable for
 attribution, as it allows to quantify how much of the total effect of a
 driver is transmitted along specific pathways (e.g. “via productivity”
 vs “via soil moisture”), and how much is direct.
 
 ## Major variants
-
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 Many variants exist, but the most important in ecology are:
 
-- Covariance-based SEM (CB-SEM) : Classical SEM framework using the
+- **Covariance-based SEM (CB-SEM)**: Classical SEM framework using the
   covariance matrix and maximum likelihood (or robust alternatives).
   Supports full latent-variable models, multiple groups, and complex
-  measurement structures. Implemented for example in [lavaan\
-  ](https://cran.r-project.org/web/packages/lavaan/lavaan.pdf?utm_source=chatgpt.com)
+  measurement structures. Implemented for example in [lavaan](https://cran.r-project.org/web/packages/lavaan/lavaan.pdf){:target="_blank"}.
 
-- Piecewise SEM (component-based SEM) : The system is represented as a
+- **Piecewise SEM (component-based SEM)**: The system is represented as a
   set of linked regression or mixed models (e.g. lm, glmer, gam) and
   evaluated using d-separation tests. This approach fits well with
   common ecological data structures (e.g. non-normal responses, random
   effects, hierarchical designs) and is widely used in ecology.
-  [piecewiseSEM\
-  ](https://cran.r-project.org/web/packages/piecewiseSEM/vignettes/piecewiseSEM.html?utm_source=chatgpt.com)
+  [piecewiseSEM](https://cran.r-project.org/web/packages/piecewiseSEM/vignettes/piecewiseSEM.html){:target="_blank"}
 
-- Dynamic structural equation models (DSEM) : Extensions of SEM to
+- **Dynamic structural equation models (DSEM)**: Extensions of SEM to
   multivariate time series, allowing simultaneous and lagged effects
   (e.g. autoregressive paths, cross-lagged relationships) while
   preserving causal interpretation. Useful for attributing temporal
-  dynamics of ecosystems to lagged drivers. [dsem\
-  ](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14289?utm_source=chatgpt.com)
+  dynamics of ecosystems to lagged drivers. [dsem](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.14289){:target="_blank"}
 
-- Bayesian SEM: Bayesian implementations of SEM allow incorporation of
+- **Bayesian SEM**: Bayesian implementations of SEM allow incorporation of
   prior information, probabilistic uncertainty quantification of path
   coefficients, and straightforward model comparison via Bayes factors
-  or information criteria. [blavaan\
-  ](https://cran.r-project.org/web/packages/blavaan/blavaan.pdf?utm_source=chatgpt.com)
+  or information criteria. [blavaan](https://cran.r-project.org/web/packages/blavaan/blavaan.pdf){:target="_blank"}
 
 ## Further online resources
-
 {: .no_toc }
-- Book: *Structural equation modeling and natural systems* {% cite grace2006 --style _bibliography/narrative %}. Comprehensive methodological and ecological introduction, with many
-  worked examples.[\
-  ](https://www.cambridge.org/core/books/structural-equation-modeling-and-natural-systems/D05B2328107F91AF772182F3AF88EB12?utm_source=chatgpt.com)
+- Book: *Structural equation modeling and natural systems* {% cite grace2006structural --style _bibliography/narrative %}. Comprehensive methodological and ecological introduction, with many
+  worked examples.
 
-- Article: {% cite grace2010 --style _bibliography/narrative %} “On the specification of structural
+- Article: {% cite grace2010specification --style _bibliography/narrative %} “On the specification of structural
   equation models for ecological systems.” *Ecological Monographs*.
   Guidance on specifying and evaluating SEMs in ecology
 
 - R package piecewiseSEM vignette: “Piecewise Structural Equation
-  Modeling in R,” with updates described by {% cite lefcheck2016 --style _bibliography/narrative %}.[\
-  ](https://cran.r-project.org/web/packages/piecewiseSEM/vignettes/piecewiseSEM.html?utm_source=chatgpt.com)
+  Modeling in R” ({% cite lefcheck2016piecewisesem --style _bibliography/narrative %} and updates).
 
-- R package lavaan website and reference manual.[\
-  ](https://cran.r-project.org/package%3Dlavaan?utm_source=chatgpt.com)
+- R package [lavaan](https://cran.r-project.org/package=lavaan){:target="_blank"} website and reference manual.
 
-- R package dsem documentation for dynamic structural equation
-  models.[\
-  ](https://james-thorson-noaa.github.io/dsem/?utm_source=chatgpt.com)
+- R package [dsem documentation](https://james-thorson-noaa.github.io/dsem/){:target="_blank"} for dynamic structural equation
+  models.
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite grace2006 --style _bibliography/narrative_full %}
+- {% cite_resource grace2006structural --style _bibliography/narrative %}
 
-- {% cite grace2010 --style _bibliography/narrative_full %}
+- {% cite_resource grace2010specification --style _bibliography/narrative %}
 
-- {% cite lefcheck2016 --style _bibliography/narrative_full %}
+- {% cite_resource lefcheck2016piecewisesem --style _bibliography/narrative %}
 
-- {% cite thorson2024 --style _bibliography/narrative_full %}
+- {% cite_resource thorson2024dynamica --style _bibliography/narrative %}
 
-- {% cite yao2025 --style _bibliography/narrative_full %}
+- {% cite_resource zhu2024applications --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite gu2022 --style _bibliography/narrative_full %}
+- {% cite_resource gu2022quantifying --style _bibliography/narrative %}
 
-- {% cite yao2025b --style _bibliography/narrative_full %}
+- {% cite_resource yao2025quantifying --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite roland2019 --style _bibliography/narrative_full %}
+- {% cite_resource roland2019structural --style _bibliography/narrative %}
 
-- {% cite jonsson2010 --style _bibliography/narrative_full %}
+- {% cite_resource jonsson2009structural --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- Semopy ([https://semopy.com](https://semopy.com)
-  [semopy.com](http://semopy.com)). Provides a lavaan-like
+- [Semopy](https://semopy.com){:target="_blank"}. Provides a lavaan-like
   syntax, supports path analysis, latent-variable SEM, and growth
   models, with functions for model fitting, diagnostics, and
   visualization.
 
 #### R
 {: .no_toc }
-- lavaan (CRAN: lavaan). General latent variable and SEM framework (path
+- [lavaan](https://cran.r-project.org/package=lavaan){:target="_blank"}. General latent variable and SEM framework (path
   analysis, CFA, SEM, growth models). Uses a concise model syntax and
   supports ML/robust ML, WLS, FIML for missing data, multi-group models,
   and many fit indices and post-processing tools.
 
-- piecewiseSEM (CRAN: piecewiseSEM). Implements piecewise structural
+- [piecewiseSEM](https://cran.r-project.org/package=piecewiseSEM){:target="_blank"}. Implements piecewise structural
   equation modelling from a list of fitted models (lm, lmer, glmmTMB,
   gam, etc.). Provides d-separation tests, standardization, indirect
   effects, and plotting tools; particularly adapted to ecological data
   (non-normal, hierarchical).
 
-- blavaan (CRAN: blavaan). Bayesian counterpart to lavaan: same syntax
+- [blavaan](https://cran.r-project.org/package=blavaan){:target="_blank"}. Bayesian counterpart to lavaan: same syntax
   but fits models via Stan or JAGS, enabling Bayesian SEM with full
   posterior inference and Bayes-factor model comparison.
 
-- dsem (CRAN: dsem). Implements dynamic structural equation models for
+- [dsem](https://cran.r-project.org/package=dsem){:target="_blank"}. Implements dynamic structural equation models for
   multivariate ecological time series, combining SEM with
   state-space/vector autoregressive structures.
 
-- semTools (CRAN: semTools). A toolbox of utilities that extend lavaan
+- [semTools](https://cran.r-project.org/package=semTools){:target="_blank"}. A toolbox of utilities that extend lavaan
   (e.g. reliability, invariance testing, multiple imputation, latent
   interactions), often useful in more advanced SEM workflows.
 
