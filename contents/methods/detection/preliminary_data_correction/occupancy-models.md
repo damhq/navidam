@@ -88,17 +88,17 @@ Occupancy models rely on repeated surveys to estimate detection probability and 
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite mackenzie2002estimating --style _bibliography/narrative %}
+- {% cite_resource mackenzie2002estimating --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite kalle2018when --style _bibliography/narrative %}
+- {% cite_resource kalle2018when --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite vanstrien2013opportunistic --style _bibliography/narrative %}
+- {% cite_resource vanstrien2013opportunistic --style _bibliography/narrative %}
 
 ## Implementation
 

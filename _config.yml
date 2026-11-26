@@ -104,6 +104,7 @@ scholar:
   style: apa
   bibliography: 1DAM.bib
   locale: en
+  bibliography_template: '{{ reference | linkify_resource: entry.doi, entry.url }}'
 
 
 kramdown:

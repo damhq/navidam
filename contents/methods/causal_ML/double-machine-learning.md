@@ -50,19 +50,19 @@ Since ML algorithms are highly flexible to non-parametric relationships, they ca
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite chernozhukov2018double  --style _bibliography/narrative %}
-- {% cite bach2022doubleml  --style _bibliography/narrative %}
-- {% cite bach2024doubleml  --style _bibliography/narrative %}
+- {% cite_resource chernozhukov2018double  --style _bibliography/narrative %}
+- {% cite_resource bach2022doubleml  --style _bibliography/narrative %}
+- {% cite_resource bach2024doubleml  --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite jian2025identification  --style _bibliography/narrative %}
+- {% cite_resource jian2025identification  --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite fink2023double --style _bibliography/narrative %}
+- {% cite_resource fink2023double --style _bibliography/narrative %}
 
 ## Implementation 
 

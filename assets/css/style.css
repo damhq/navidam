@@ -505,6 +505,34 @@
 .assessment-meta {
   margin: 0.5em 0 1em;
 }
+.assessment-table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.assessment-table-heading h2 {
+  margin: 0.6em 0;
+}
+.assessment-table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.method-assessment-button {
+  white-space: nowrap;
+}
+.assessment-status-help {
+  display: block;
+  margin-left: 0.4em;
+  font-size: 0.85em;
+  text-align: right;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
 .assessment-assessor-line {
   margin-bottom: 0.4em;
 }
@@ -584,4 +612,28 @@ a.label {
 }
 .used-resources-section ul {
   font-size: 0.9em;
+}
+
+.citation-doi-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.15em;
+  height: 1.15em;
+  margin-left: 0.15em;
+  padding: 0;
+  border: 1px solid #6f42c1;
+  border-radius: 0.35em;
+  background-color: #f3f0fa;
+  font-size: 0.82em;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: 0.15em;
+  box-sizing: border-box;
+}
+
+.citation-doi-links a:hover,
+.citation-doi-links a:focus-visible {
+  background-color: #ede7f6;
+  text-decoration: underline;
 }

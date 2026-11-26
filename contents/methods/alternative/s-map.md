@@ -15,8 +15,8 @@ author: Miriam Beck, FRB-CESAB, Montpellier, France
 
 ## Description & principle
 
-S-Map (sequential locally weighted global linear maps; {% cite sugihara1997 --style _bibliography/narrative %};
-{% cite sugihara2012 --style _bibliography/narrative %}) is an equation-free modeling technique within the Empirical
+S-Map (sequential locally weighted global linear maps, {% cite sugihara1994nonlinear --style _bibliography/narrative %},
+{% cite sugihara2012detecting --style _bibliography/narrative %}) is an equation-free modeling technique within the Empirical
 Dynamical Modeling (EDM) framework, designed to quantify and explore
 dynamic, potentially time-varying relationships between variables in
 complex systems. The method relies on the concept of state space
@@ -35,54 +35,26 @@ direction of interactions among variables change over time or across
 system states.
 
 ## Major variants
-
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
-**Bayesian versions of EDM** rely on Gaussian process (GP)
-regressions, combining short time series in a hierarchical model
-structure to increase forecast precision, addressing cases of short time
-series or noisy data, as described by {% cite munch2017circumventing --style _bibliography/narrative %}. This extension includes S-Map, as described by
-{% cite yukihira2025 --style _bibliography/narrative %}.\
-**Variable step size EDM** (VS-EDM; {% cite johnsonmunch2022 --style _bibliography/narrative %}) incorporates
-the actual temporal spacing between observations into delay-coordinate
-vectors rather than assuming a fixed lag. Under irregular sampling or
-missing data, the reconstructed state-space reflects true dynamics more
-faithfully.\
-The introduction of regularization schemes (e.g. ridge, lasso, elastic
-net) improves the inference and forecasting when process noise is high
-(**regularized S-Map**, {% cite cenci2019 --style _bibliography/narrative %}).\
-Further variants or tweaks are discussed in {% cite munch2023 --style _bibliography/narrative %}.
+- **Baysian versions of EDM** rely on (Gaussian Processes (GP) regressions, combining short time series in a hierarchical model structure to increase forecast precision, addressing cases of short time series or noisy data {% cite munch2017circumventing --style _bibliography/narrative %}. This extension includes S-Map {% cite yukihira2025quantifying --style _bibliography/narrative %}.
+- **Variable step size EDM** (VS-EDM; {% cite johnson2022empirical --style _bibliography/narrative %}) incorporates the actual temporal spacing between observations into delay-coordinate vectors rather than assuming a fixed lag. Under irregular sampling or missing data, the reconstructed state-space reflects true dynamics more faithfully. The introduction of regularization schemes (e.g. ridge, lasso, elastic net) improves the inference and forecasting when process noise is high (**regularized S-Map**, {% cite cenci2019regularized --style _bibliography/narrative %}). Further variants or tweaks are discussed in {% cite munch2023recent --style _bibliography/narrative %}.
 
 ## Further online resources
-
 {: .no_toc }
-The rEDM package documentations provide walk through examples across
+The [rEDM package documentations](https://ha0ye.github.io/rEDM/articles/rEDM.html){:target="_blank"} provide walk through examples across
 methods and workflows in EDM, including CCM and highlighting its
-integration in EDM workflow
-(https://ha0ye.github.io/rEDM/articles/rEDM.html)
+integration in EDM workflow.
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite sugihara2012 --style _bibliography/narrative_full %}
+- {% cite_resource sugihara2012detecting --style _bibliography/narrative %}
 
-- {% cite sugihara1997 --style _bibliography/narrative_full %}
+- {% cite_resource sugihara1994nonlinear --style _bibliography/narrative %}
 
-- {% cite munch2017 --style _bibliography/narrative_full %}
-
-- {% cite yukihira2025 --style _bibliography/narrative_full %}
-
-- {% cite johnsonmunch2022 --style _bibliography/narrative_full %}
-
-- {% cite cenci2019 --style _bibliography/narrative_full %}
-
-- {% cite munch2023 --style _bibliography/narrative_full %}
-
-- {% cite ushio2020 --style _bibliography/narrative_full %}
+- {% cite_resource ushio2020forecasting --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
@@ -92,30 +64,30 @@ integration in EDM workflow
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite kawatsu2021 --style _bibliography/narrative_full %}
+- {% cite_resource kawatsu2021are --style _bibliography/narrative %}
 
-- {% cite wang2020 --style _bibliography/narrative_full %}
+- {% cite_resource wang2020causala --style _bibliography/narrative %}
 
-- {% cite mcgowan2017 --style _bibliography/narrative_full %}
+- {% cite_resource mcgowan2017predicting --style _bibliography/narrative %}
 
-- {% cite rogers2020 --style _bibliography/narrative_full %}
+- {% cite_resource rogers2020trophic --style _bibliography/narrative %}
 
-- {% cite zhao2023 --style _bibliography/narrative_full %}
+- {% cite_resource zhao2023relationships --style _bibliography/narrative %}
 
 ## Implementation
 
 #### Python
 {: .no_toc }
-- pyEDM (https://pypi.org/project/pyEDM/,
-  https://sugiharalab.github.io/EDM_Documentation/)
+- [pyEDM](https://pypi.org/project/pyEDM/){:target="_blank"}
+  ([https://sugiharalab.github.io/EDM_Documentation/](https://sugiharalab.github.io/EDM_Documentation/){:target="_blank"})
 
-- fastEDM (https://edm-developers.github.io/fastEDM-python/)
+- [fastEDM](https://edm-developers.github.io/fastEDM-python/){:target="_blank"}
 
 #### R
 {: .no_toc }
-- rEDM (https://ha0ye.github.io/rEDM/articles/rEDM.html)
+- [rEDM](https://ha0ye.github.io/rEDM/articles/rEDM.html){:target="_blank"}
 
-- fastEDM (https://github.com/EDM-Developers/fastEDM-r) allow to process
+- [fastEDM](https://github.com/EDM-Developers/fastEDM-r){:target="_blank"} allow to process
   panel data (‘multispatial EDM’)
 
 ### Code Cells

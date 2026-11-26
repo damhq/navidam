@@ -27,13 +27,13 @@ In state-space models, observation and ecological processes are on separate hier
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite auger-methe2021guide --style _bibliography/narrative %}
+- {% cite_resource auger-methe2021guide --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite jonsen2005robust --style _bibliography/narrative %}
+- {% cite_resource jonsen2005robust --style _bibliography/narrative %}
 
 
 ## Implementation 

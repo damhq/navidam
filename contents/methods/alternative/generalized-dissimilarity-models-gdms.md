@@ -30,7 +30,9 @@ values. The central idea is that the biological dissimilarity between
 two locations is a function of both the geographical distance between
 them and the environmental differences.
 
-Figure from [{% cite mokany2022 --style _bibliography/narrative %}](https://paperpile.com/c/HziGHr/hgxv). Conceptual depiction of
+![Conceptual depiction of the generalized dissimilarity model fitting procedure]({{ site.baseurl }}/assets/images/gdm-model-fitting.png)
+
+Figure from {% cite mokany2022working --style _bibliography/narrative %}. Conceptual depiction of
 the model fitting procedure of generalized dissimilarity modelling
 (GDM). To best represent the observed dissimilarity (*dij*) between
 sites *i* and *j*, GDM uses I-spline basis functions to transform each
@@ -67,11 +69,7 @@ community change is due to temperature differences, 30% is due to soil
 type, and the remaining 10% is purely due to geographic isolation.
 
 ## Major variants
-
 {: .no_toc }
-{: .d-inline-block }
-optional
-{: .label}
 Many variants exist, but most important are:
 
 - extensions to phylogenetic and/or functional dissimilarity, or even
@@ -85,37 +83,33 @@ Many variants exist, but most important are:
   turnover components
 
 ## Further online resources
-
 {: .no_toc }
-- Mokany, K., Ware, C., Woolley, S. N. C., Ferrier, S., &
-  Fitzpatrick, M. C. (2022). A working guide to harnessing generalized
-  dissimilarity modelling for biodiversity analysis and conservation
-  assessment. Global Ecology and Biogeography: A Journal of
-  Macroecology, 31(4), 802–821.
+- {% cite_resource mokany2022working --style _bibliography/narrative %}: A working guide to harnessing generalized
+  dissimilarity modelling for biodiversity analysis and conservation assessment.
 
-- R Package gdm tutorial : https://mfitzpatrick.al.umces.edu/gdm/
+- [R package gdm tutorial](https://mfitzpatrick.al.umces.edu/gdm/){:target="_blank"}
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite mokany2022 --style _bibliography/narrative_full %}
+- {% cite_resource mokany2022working --style _bibliography/narrative %}
 
-- {% cite talluto2018 --style _bibliography/narrative_full %}
+- {% cite_resource talluto2018multifaceted --style _bibliography/narrative %}
 
-- {% cite leitao2017 --style _bibliography/narrative_full %}
+- {% cite_resource leitao2017sgdm --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite leitao2015 --style _bibliography/narrative_full %}
+- {% cite_resource leitao2015mapping --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite ferrier2007 --style _bibliography/narrative_full %}
+- {% cite_resource ferrier2007using --style _bibliography/narrative %}
 
 ## Implementation
 
@@ -124,13 +118,10 @@ Many variants exist, but most important are:
 
 #### R
 {: .no_toc }
-- gdm ([CRAN - Package
-  gdm](https://cran.r-project.org/package=gdm) or [GitHub -
-  fitzLab-AL/gdm](https://github.com/fitzLab-AL/gdm)). Performs
+- gdm ([CRAN](https://cran.r-project.org/package=gdm){:target="_blank"} or [GitHub](https://github.com/fitzLab-AL/gdm){:target="_blank"}). Performs
   standard GDM, handles predictions and environmental transformations.
 
-- sgdm ([GitHub -
-  sparsegdm/sgdm_package](https://github.com/sparsegdm/sgdm_package)).
+- sgdm ([GitHub](https://github.com/sparsegdm/sgdm_package){:target="_blank"}).
   An extension designed for high-dimensional datasets (e.g.,
   hyperspectral remote sensing, time-series data).Uses a sparse
   canonical correlation analysis component to reduce the large number of

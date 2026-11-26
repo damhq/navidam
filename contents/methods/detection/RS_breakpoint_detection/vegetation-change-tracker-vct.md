@@ -21,15 +21,18 @@ algorithm is similar to LandTrendr in that changes are detected through
 simultaneous analysis of all images in an LTSS. But the mechanisms based
 on which changes are detected are different. The VCT is based on the
 spectral–temporal characteristics of land cover and forest change
-processes. It consists of two major steps. In the first step, each image
-in an LTSS is analyzed to create masks and to calculate spectral indices
-that are measures of forest likelihood. Once this step is complete for
-all images in that LTSS, the derived indices and masks are analyzed in a
-time series analysis step to map disturbances. Based on these
-distinctive temporal profiles of different land cover and forest change
-processes (by the time series of the derived indices), decision rules
-are used to identify persisting land cover types and to detect
-disturbances in a sequence of steps
+processes. It consists of two major steps.
+
+1. In the first step, each image in an LTSS is analyzed to create masks
+   and to calculate spectral indices that are measures of forest
+   likelihood.
+2. Once this step is complete for all images in that LTSS, the derived
+   indices and masks are analyzed in a time series analysis step to map
+   disturbances. Based on these distinctive temporal profiles of
+   different land cover and forest change processes (by the time series
+   of the derived indices), decision rules are used to identify
+   persisting land cover types and to detect disturbances in a sequence
+   of steps
 
 It should be noted that because VCT uses the spectral–temporal
 information as recorded in an LTSS to detect forest disturbance, the
@@ -42,40 +45,38 @@ or diseases, although, not all of these events can be detected reliably
 by the current version of the VCT.
 
 ## Major variants
-
 {: .no_toc }
 {: .d-inline-block }
 optional
 {: .label}
 
 ## Further online resources
-
 {: .no_toc }
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite huang2009 --style _bibliography/narrative_full %}
+- {% cite_resource huang2009development --style _bibliography/narrative %}
 
-- {% cite huang2009 --style _bibliography/narrative_full %}
+- {% cite_resource huang2009dynamics --style _bibliography/narrative %}
 
-- {% cite huang2010 --style _bibliography/narrative_full %}
+- {% cite_resource huang2010automated --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite li2009 --style _bibliography/narrative_full %}
+- {% cite_resource li2009assessing --style _bibliography/narrative %}
 
-- {% cite masek2013 --style _bibliography/narrative_full %}
+- {% cite_resource masek2013united --style _bibliography/narrative %}
 
-- {% cite zhao2015 --style _bibliography/narrative_full %}
+- {% cite_resource zhao2015use --style _bibliography/narrative %}
 
-- {% cite kauffman2016 --style _bibliography/narrative_full %}
+- {% cite_resource kauffman2016automated --style _bibliography/narrative %}
 
-- {% cite diao2020 --style _bibliography/narrative_full %}
+- {% cite_resource diao2020use --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
@@ -94,6 +95,6 @@ optional
 
 ### Code Cells
 {: .no_toc }
-<https://developers.google.com/earth-engine/apidocs/ee-algorithms-temporalsegmentation-vct>
+[https://developers.google.com/earth-engine/apidocs/ee-algorithms-temporalsegmentation-vct](https://developers.google.com/earth-engine/apidocs/ee-algorithms-temporalsegmentation-vct){:target="_blank"}
 
 ## Assessment table

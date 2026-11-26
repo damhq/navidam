@@ -26,7 +26,7 @@ Statistical matching is one of several related propensity score (PS) methods (se
 
 Various matching algorithms are available that affect the quality of the matching. The *nearest neighbour algorithm* pairs treated units with its nearest untreated unit in terms of propensity scores. It is described as ‘greedy’ since pairing occurs sequentially and does not aim to optimize total distances across all pairs. The most typical matching order is to begin with the highest propensity score so that potentially difficult-to-match units are matched first. *Optimal matching* is a non-greedy option that does seek to minimize the distance between all pairs, but can be time-consuming and often yields similar results. A “caliper width” can be specified that determines the maximum tolerable difference between the treated and matched untreated units, which can improve performance but also result in more discarded unmatched units that exceed the width. Such choices often trade-off bias and variance of the derived estimand i.e., closer matching might reduce bias but increase variance when units are discarded. Matching with replacement can overcome the problem of unmatched treated units by reusing untreated units as controls but decreases the effective sample size.
 
-The propensity scores themselves are usually estimated using either simple logistic regression, with treated or not as the response, or a more complex machine learning algorithm e.g. random forest or boosted regression tree. The roles of variables in the system determine which should be included in the PS model. To reduce bias, the key variables should be those affecting both the treatment and the outcome, since they create confounding effects causing bias. Additionally, variables related only to the outcome are often included – to reduce variance rather than bias {% cite ramsey2019using %}. Variables only related to the treatment are less helpful to include since they have no effect on bias and can increase variance {% cite ramsey2019using %}. 
+The propensity scores themselves are usually estimated using either simple logistic regression, with treated or not as the response, or a more complex machine learning algorithm e.g. random forest or boosted regression tree. The roles of variables in the system determine which should be included in the PS model. To reduce bias, the key variables should be those affecting both the treatment and the outcome, since they create confounding effects causing bias. Additionally, variables related only to the outcome are often included – to reduce variance rather than bias {% cite ramsey2019using --style _bibliography/narrative %}. Variables only related to the treatment are less helpful to include since they have no effect on bias and can increase variance {% cite ramsey2019using --style _bibliography/narrative %}.
 
 Covariate balance plots are a useful part of the workflow when using PS methods. Covariate balance is the degree to which the distribution of covariates is similar across levels of the treatment. Covariate balance plots essentially compare the distribution of confounder covariate variables in the treated and untreated units. Before analysis, the distributions of the raw values can help identify confounders with the largest difference in covariate distributions. Poor balance may arise due to systematic bias or simply by chance due to low sample size. Covariate balance plots can also be used after matching to assess how successfully they have reduced potential confounding.
 
@@ -60,18 +60,18 @@ For dynamic systems, propensity scores might be allowed to vary over time, with 
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite ramsey2019using %} presented the first review of propensity score methods in ecology and highlighted the importance of treatment heterogeneity as a scenario when propensity score methods outperform multiple regression.
+- {% cite_resource ramsey2019using --style _bibliography/narrative %} presented the first review of propensity score methods in ecology and highlighted the importance of treatment heterogeneity as a scenario when propensity score methods outperform multiple regression.
 
 
 ### Research applications
 {: .no_toc }
 
-- {% cite andam2008measuring --style _bibliography/narrative %}
-- {% cite ribas2020global --style _bibliography/narrative %}
-- {% cite schleicher2020statistical --style _bibliography/narrative %}
-- {% cite ribas2021estimating --style _bibliography/narrative %}
-- {% cite ramsey2019using --style _bibliography/narrative %}
-- {% cite butsic2017quasiexperimental --style _bibliography/narrative %}
+- {% cite_resource andam2008measuring --style _bibliography/narrative %}
+- {% cite_resource ribas2020global --style _bibliography/narrative %}
+- {% cite_resource schleicher2020statistical --style _bibliography/narrative %}
+- {% cite_resource ribas2021estimating --style _bibliography/narrative %}
+- {% cite_resource ramsey2019using --style _bibliography/narrative %}
+- {% cite_resource butsic2017quasiexperimental --style _bibliography/narrative %}
 
 ## Implementation 
 

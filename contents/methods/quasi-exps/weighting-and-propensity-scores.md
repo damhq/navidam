@@ -35,10 +35,13 @@ stratification/subclassification - that all aim to balance the covariate
 distributions between treated and untreated units, reducing the impact
 of confounding variables and bias in causal estimates.
 
-Typically, there are two steps in the analysis: (1) a PS model, with
-treatment assignment as the response and (2) an outcome model, with the
-causal outcome variable as the response, that makes use of the PS scores
-(modelled treatment assignment probabilities from the PS model). By
+Typically, there are two steps in the analysis:
+
+1. a PS model, with treatment assignment as the response and
+2. an outcome model, with the causal outcome variable as the response, that makes use of the PS scores
+   (modelled treatment assignment probabilities from the PS model).
+
+By
 producing a single PS score, PS methods can integrate the effects of
 multiple confounders into a single variable, making them applicable for
 small datasets with many confounders. Propensity score methods do,
@@ -69,7 +72,7 @@ integrated and adjusted for by a single set of PS. Since covariate
 balancing is done prior to estimating the causal effect of interest, PS
 methods are also less sensitive to correct model specification e.g.,
 whether confounder effects are linear, non-linear or interactive than
-traditional regression {% cite ho2007 --style _bibliography/narrative %}.
+traditional regression {% cite ho2007matching --style _bibliography/narrative %}.
 
 Another set of advantages is related to the transparency of the
 generalizability of estimated effects. PS methods require specification
@@ -77,7 +80,7 @@ of an estimand of interest. In conservation, the target estimand is
 often either the ATE (average treatment effects across all units) or the
 ATT (average treatment effect across treated units), but the estimand is
 rarely specified if causal inference approaches are not used. When
-causal inference approaches, such as PS methods, are used, then weights
+causal inference approachs, such as PS methods, are used, then weights
 can be used to target any estimand of interest. If there is strong
 placement bias of the treatment, some treated units may not have any
 similar untreated units, meaning no data are available to inform on
@@ -87,7 +90,7 @@ support’ {% cite schafer2008average --style _bibliography/narrative %}. Throug
 methods, the region of common support is clearly assessed, which helps
 report clear statements on limits of inference. By contrast, traditional
 regression can lead to extrapolation of results into regions with no
-supporting evidence, which is not made explicit when the results are
+supporting evidence, which is not made explicit then the results are
 reported.
 
 Even if the same statistical results are obtained, PS methods offer a
@@ -145,7 +148,7 @@ units (e.g., if they are in a strata without multiple treatment levels).
 However, compared to matching, subclassification usually leads to fewer
 discarded units. Subclassification is a simple and transparent approach
 to deal with covariate imbalance and non-random treatment
-assignment. Subclassification approaches also lend themselves to studying
+assignment.Subclassification approaches also lend themselves to studying
 treatment effect heterogeneity, if treatment effects are allowed to vary
 by strata in the outcome model (e.g., with a treatment-strata
 interaction term). In this case, subclassification can increase the
@@ -161,52 +164,40 @@ effects according to the representation of the strata in the target
 population.
 
 ## Further online resources
-
 {: .no_toc }
-[Weighting for Covariate Balance in Observational Studies •
-WeightIt](https://ngreifer.github.io/WeightIt/)
+- [Weighting for Covariate Balance in Observational Studies • WeightIt](https://ngreifer.github.io/WeightIt/){:target="_blank"}
 
 ## Reference articles
 
 ### Method
 {: .no_toc }
 
-- {% cite ramsey2019using --style _bibliography/narrative_full %}
-
-- {% cite ho2007 --style _bibliography/narrative_full %}
+- {% cite_resource ramsey2019using --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
-- {% cite ramsey2019using --style _bibliography/narrative_full %}
+- {% cite_resource ramsey2019using --style _bibliography/narrative %}
 
-- {% cite butsic2017quasiexperimental --style _bibliography/narrative_full %}
+- {% cite_resource butsic2017quasiexperimental --style _bibliography/narrative %}
 
-- {% cite fink2023double --style _bibliography/narrative_full %}
+- {% cite_resource fink2023double --style _bibliography/narrative %}
 
-- {% cite boyd2025 --style _bibliography/narrative_full %}
+- {% cite_resource boyd2025using --style _bibliography/narrative %}
 
 ## Implementation
 
 #### R
 {: .no_toc }
-WeightIt – Flexible package for generating weights (including IPTW, ATT,
-overlap, and more) using various methods (logistic, GBM, etc.) - modern
-workflows
+- [WeightIt](https://cran.r-project.org/web/packages/WeightIt/refman/WeightIt.html){:target="_blank"} – Flexible package for generating weights (including IPTW, ATT, overlap, and more) using various methods (logistic, GBM, etc.) - modern workflows
 
-CBPS – Covariate Balancing Propensity Scores: directly targets covariate
-balance when estimating weights.
+- [CBPS](https://cran.r-project.org/web/packages/CBPS/refman/CBPS.html){:target="_blank"} – Covariate Balancing Propensity Scores: directly targets covariate balance when estimating weights.
 
-survey/srvyr - functions to add design weights (known weights that stem
-from the sampling design) or propensity score weights (unknown weights
-derived from the available data) in glm models.
+- [survey](https://cran.r-project.org/web/packages/survey/refman/survey.html){:target="_blank"}/[srvyr](https://cran.r-project.org/web/packages/srvyr/refman/srvyr.html){:target="_blank"} - functions to add design weights (known weights that stem from the sampling design) or propensity score weights (unknown weights derived from the available data) in glm models.
 
-PSweight: This package offers a comprehensive platform for propensity
-score weighting.
+- [PSweight](https://cran.r-project.org/web/packages/PSweight/refman/PSweight.html){:target="_blank"}: This package offers a comprehensive platform for propensity score weighting.
 
-cobalt: This package is useful for creating covariate balance tables and
-plots.
+- [cobalt](https://cran.r-project.org/web/packages/cobalt/refman/cobalt.html){:target="_blank"}: This package is useful for creating covariate balance tables and plots.
 
-twang: uses generalized boosted models to estimate propensity scores and
-provides tools for assessing balance and creating weights.
+- [twang](https://cran.r-project.org/web/packages/twang/refman/twang.html){:target="_blank"}: uses generalized boosted models to estimate propensity scores and provides tools for assessing balance and creating weights.
 
 ## Assessment table

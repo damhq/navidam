@@ -43,23 +43,23 @@ Frescalo is a method developed by {% cite hill2012  --style _bibliography/narrat
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite montras-janer2024  --style _bibliography/narrative %}
+- {% cite_resource montras-janer2024  --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
 {: .d-inline-block }
 
-- {% cite auffret2022  --style _bibliography/narrative %}
-- {% cite eichenberg2021  --style _bibliography/narrative %}
-- {% cite fox2014  --style _bibliography/narrative %}
-- {% cite britishbryologicalsociety2014  --style _bibliography/narrative %}
-- {% cite suggitt2023  --style _bibliography/narrative %}
-- {% cite white2019a  --style _bibliography/narrative %}
-- {% cite pescott2019  --style _bibliography/narrative %}
-- {% cite eichenberg2021  --style _bibliography/narrative %}
-- {% cite redhead2018  --style _bibliography/narrative %}
-- {% cite dyer2017  --style _bibliography/narrative %}
-- {% cite goury2025  --style _bibliography/narrative %}
+- {% cite_resource auffret2022  --style _bibliography/narrative %}
+- {% cite_resource eichenberg2021  --style _bibliography/narrative %}
+- {% cite_resource fox2014  --style _bibliography/narrative %}
+- {% cite_resource britishbryologicalsociety2014  --style _bibliography/narrative %}
+- {% cite_resource suggitt2023  --style _bibliography/narrative %}
+- {% cite_resource white2019a  --style _bibliography/narrative %}
+- {% cite_resource pescott2019  --style _bibliography/narrative %}
+- {% cite_resource eichenberg2021  --style _bibliography/narrative %}
+- {% cite_resource redhead2018  --style _bibliography/narrative %}
+- {% cite_resource dyer2017  --style _bibliography/narrative %}
+- {% cite_resource goury2025  --style _bibliography/narrative %}
 
 ## Implementation 
 

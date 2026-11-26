@@ -53,27 +53,27 @@ As for Random Forest, Boosted decision tree relationships are not directly inter
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite breiman2001random  --style _bibliography/narrative_full %}
-- {% cite cutler2007random  --style _bibliography/narrative_full %}
-- {% cite death2007boosted  --style _bibliography/narrative_full %}
-- {% cite elith2008working  --style _bibliography/narrative_full %}
+- {% cite_resource breiman2001random  --style _bibliography/narrative_full %}
+- {% cite_resource cutler2007random  --style _bibliography/narrative_full %}
+- {% cite_resource death2007boosted  --style _bibliography/narrative_full %}
+- {% cite_resource elith2008working  --style _bibliography/narrative_full %}
 
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite ham2005investigation  --style _bibliography/narrative_full %}
-- {% cite pal2005random  --style _bibliography/narrative_full %}
-- {% cite gislason2006random  --style _bibliography/narrative_full %}
-- {% cite lawrence2004classification  --style _bibliography/narrative_full %}
-- {% cite ghatkar2019classification  --style _bibliography/narrative_full %}
+- {% cite_resource ham2005investigation  --style _bibliography/narrative_full %}
+- {% cite_resource pal2005random  --style _bibliography/narrative_full %}
+- {% cite_resource gislason2006random  --style _bibliography/narrative_full %}
+- {% cite_resource lawrence2004classification  --style _bibliography/narrative_full %}
+- {% cite_resource ghatkar2019classification  --style _bibliography/narrative_full %}
 
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite bland2015predicting  --style _bibliography/narrative_full %}
-- {% cite cazalis2023prioritizing  --style _bibliography/narrative_full %}
+- {% cite_resource bland2015predicting  --style _bibliography/narrative_full %}
+- {% cite_resource cazalis2023prioritizing  --style _bibliography/narrative_full %}
 
 ## Implementation 
 

@@ -9,7 +9,7 @@ layout: default
       <span class="method-author"> {{ page.author }}</span>
     {% endif %}
     {% if page.date %}
-      <span class="method-date"> | {{ page.date | date: "%B %d, %Y" }}</span>
+      <span class="method-date"> | last edit: {{ page.date | date: "%B %d, %Y" }}</span>
     {% endif %}
     {% assign header_meta = site.data.method_meta[page.title] %}
     {% if header_meta and header_meta.doc_status != "" %}
@@ -20,7 +20,9 @@ layout: default
 
 
 
-{{ content }}
+{% assign method_content = content | replace: '<h2 id="assessment-table">', '<div class="assessment-table-heading"><h2 id="assessment-table">' %}
+{% assign method_content = method_content | replace: 'Assessment table</h2>', 'Assessment table</h2><div class="assessment-table-actions"><a class="btn btn-purple method-assessment-button" href="https://github.com/damhq/navidam/issues/new/choose" target="_blank" rel="noopener noreferrer">Assess this method</a><a class="assessment-process-link" href="https://damhq.github.io/navidam/contributing/#assess-method" target="_blank" rel="noopener noreferrer">Assessment guide</a></div></div>' %}
+{{ method_content }}
 
 
 
@@ -57,6 +59,7 @@ layout: default
     {% elsif meta.confidence != "" %}
       <span class="label confidence-score-{{ meta.confidence | slugify }}">Single assessment · confidence {{ meta.confidence }}/5</span>
     {% endif %}
+    <a class="assessment-status-help" href="{{ site.baseurl }}/contributing/#assessment-status" target="_blank" rel="noopener noreferrer" aria-label="How assessments are combined: Consensus / Debated status" title="How assessments are combined: Consensus / Debated status"><em>How are the assessments combined?</em></a>
   </p>
   {% if meta.ai_flag != "" %}
   <blockquote class="assessment-flag">
@@ -160,8 +163,4 @@ layout: default
 </div>
 {% endif %}
 
-<!-- Add References section here -->
-<div class="references-section">
-  <h2>References</h2>
-  {% bibliography --cited_in_order %}
-</div>
+{% include references.html %}

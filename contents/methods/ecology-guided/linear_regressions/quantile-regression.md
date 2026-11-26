@@ -60,22 +60,22 @@ Five online introductions to Quantile regression describing the basic requiremen
 ## Reference articles
 ### Method
 {: .no_toc }
-- {% cite koenker2001quantile --style _bibliography/narrative %}
-- {% cite koenker2017handbook --style _bibliography/narrative %}
+- {% cite_resource koenker2001quantile --style _bibliography/narrative %}
+- {% cite_resource koenker2017handbook --style _bibliography/narrative %}
 
 ### Research applications
 {: .no_toc }
 #### With RS data in Ecology / Biodiversity
 {: .no_toc }
-- {% cite rocchini2008quantile --style _bibliography/narrative %}
+- {% cite_resource rocchini2008quantile --style _bibliography/narrative %}
 
 #### Without RS data (Ecology domain)
 {: .no_toc }
-- {% cite cade2003gentle --style _bibliography/narrative %}
-- {% cite cade2005quantile --style _bibliography/narrative %}
-- {% cite hallfors2024recent --style _bibliography/narrative %}
-- {% cite schroder2005rejecting --style _bibliography/narrative %}
-- {% cite vaz2008modelling --style _bibliography/narrative %}
+- {% cite_resource cade2003gentle --style _bibliography/narrative %}
+- {% cite_resource cade2005quantile --style _bibliography/narrative %}
+- {% cite_resource hallfors2024recent --style _bibliography/narrative %}
+- {% cite_resource schroder2005rejecting --style _bibliography/narrative %}
+- {% cite_resource vaz2008modelling --style _bibliography/narrative %}
 
 ## Implementation 
 
