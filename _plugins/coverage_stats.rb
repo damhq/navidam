@@ -141,6 +141,10 @@ module NaviDAM
           rows.shift # header row
           gp_counts = Hash.new(0)
           ex_counts = Hash.new(0)
+          gp_status_by_name = {}
+          gp_review_list = []
+          gp_todo_list = []
+          gp_planned_list = []
           gp_total = 0
           ex_total = 0
           rows.each do |r|
@@ -152,30 +156,43 @@ module NaviDAM
             unless gp_name.empty?
               gp_total += 1
               gp_counts[gp_status] += 1
+              gp_status_by_name[gp_name] = gp_status
+              case gp_status
+              when "To review"
+                gp_review_list << gp_name
+              when "To do"
+                gp_todo_list << gp_name
+              when "Invited"
+                gp_planned_list << gp_name
+              end
+              unless ["Reviewed", "To review", "To do", "Invited"].include?(gp_status)
+                Jekyll.logger.warn "NaviDAM coverage:", "unknown good-practice status #{gp_status.inspect} for #{gp_name}"
+              end
             end
             unless ex_name.empty?
               ex_total += 1
               ex_counts[ex_status] += 1
+              unless ["Online", "Invited"].include?(ex_status)
+                Jekyll.logger.warn "NaviDAM coverage:", "unknown example status #{ex_status.inspect} for #{ex_name}"
+              end
             end
           end
           coverage["gp"] = {
-            "reviewed" => gp_counts["Reviewed"] || 0,
-            "toreview" => gp_counts["To review"] || 0,
-            "assigned" => gp_counts["Assigned"] || 0,
-            "invited" => gp_counts["Invited"] || 0,
-            "planned" => (gp_counts["Assigned"] || 0) + (gp_counts["Invited"] || 0),
-            "todo" => gp_counts["No"] || 0,
-            "total" => gp_total
+            "reviewed" => gp_counts["Reviewed"],
+            "toreview" => gp_counts["To review"],
+            "planned" => gp_counts["Invited"],
+            "todo" => gp_counts["To do"],
+            "total" => gp_total,
+            "review_list" => gp_review_list.sort,
+            "todo_list" => gp_todo_list.sort,
+            "planned_list" => gp_planned_list.sort
           }
           coverage["ex"] = {
-            "online" => ex_counts["Online"] || 0,
-            "toreview" => ex_counts["To review"] || 0,
-            "assigned" => ex_counts["Assigned"] || 0,
-            "invited" => ex_counts["Invited"] || 0,
-            "planned" => (ex_counts["Assigned"] || 0) + (ex_counts["Invited"] || 0),
-            "todo" => ex_counts["No"] || 0,
+            "online" => ex_counts["Online"],
+            "planned" => ex_counts["Invited"],
             "total" => ex_total
           }
+          site.data["good_practice_status"] = gp_status_by_name
         end
       rescue StandardError => e
         Jekyll.logger.warn "NaviDAM coverage:", "panels parse failed (#{e.message})"

@@ -25,11 +25,17 @@
   {% if nav_footer_custom != "" %}
     {{ nav_footer_custom }}
   {% else %}
-    <footer class="site-footer">
+    <footer class="site-footer{% if page.layout == 'method' or page.layout == 'baserefs' %} site-footer-with-actions{% endif %}">
+  {% if page.layout == "method" %}
+    {% include documentation_actions.html guide_url="https://damhq.github.io/navidam/contributing/#document-method" %}
+  {% elsif page.layout == "baserefs" %}
+    {% include documentation_actions.html guide_url="https://damhq.github.io/navidam/contributing/#5-good-practices-and-examples-pages-" %}
+  {% endif %}
   &nbsp;&nbsp;&nbsp;&nbsp;<strong>Contact</strong><br>
   &nbsp;&nbsp;&nbsp;&nbsp;joaquim.estopinan<br>
   &nbsp;&nbsp;&nbsp;&nbsp;@ univ-grenoble-alpes.fr<br>
   <br>
   This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
+    </footer>
   {% endif %}
 </div>

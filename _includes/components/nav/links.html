@@ -24,15 +24,21 @@
 
     {%- include components/nav/children.html node=node ancestors=include.ancestors all=include.all -%}
     {%- assign node_nav_label = node.nav_title | default: node.title -%}
+    {%- assign contributing_node = false -%}
+    {%- if node.url == "/contributing/" -%}
+      {%- assign contributing_node = true -%}
+    {%- endif -%}
 
     <li class="nav-list-item">
-      {%- if nav_children.size >= 1 -%}
-      <button class="nav-list-expander btn-reset" aria-label="toggle items in {{ node_nav_label }} category" aria-pressed="false">
+      {%- if nav_children.size >= 1 or contributing_node -%}
+      <button class="nav-list-expander btn-reset" aria-label="toggle items in {{ node_nav_label }} category" {% if contributing_node %}aria-expanded{% else %}aria-pressed{% endif %}="false">
         <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
       </button>
       {%- endif -%}
       <a href="{{ node.url | relative_url }}" class="nav-list-link">{{ node_nav_label }}</a>
-      {%- if nav_children.size >= 1 -%}
+      {%- if contributing_node -%}
+        {%- include components/nav/contributing_links.html items=site.data.contributing_nav -%}
+      {%- elsif nav_children.size >= 1 -%}
         {%- if node.child_nav_order == 'desc' or node.child_nav_order == 'reversed' -%}
           {%- assign nav_children = nav_children | reverse -%}
         {%- endif -%}

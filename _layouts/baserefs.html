@@ -12,6 +12,11 @@ layout: default
     {% if page.date %}
       <span class="page-date"> | {{ page.date | date: "%B %d, %Y" }}</span>
     {% endif %}
+    {% assign practice_key = page.practice_status_key | default: page.title %}
+    {% assign practice_status = site.data.good_practice_status[practice_key] %}
+    {% if practice_status and practice_status != "" %}
+      <span class="label doc-status-{{ practice_status | slugify }}">{{ practice_status | escape }}</span>
+    {% endif %}
   </p>
 </div>
 

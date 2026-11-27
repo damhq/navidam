@@ -1,6 +1,7 @@
 ---
 title: Methods
 nav_order: 4
+contribution_sections: methods
 permalink: /methods
 categories:
 - methods

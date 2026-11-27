@@ -1,51 +1,116 @@
 {% assign cov = site.data.coverage %}
 
-### Assessments to review ({{ cov.assess.review_list | size }})
+{% if include.group == nil or include.group == "methods" %}
+<h3 id="method-assessment">Method assessment</h3>
+{% if include.group %}<p>See the Contributing section on <a href="{{ site.baseurl }}/contributing/#assess-method">assessment</a>.</p>{% endif %}
+
+<details class="contribution-section" id="method-assessments-to-review">
+<summary><strong>To review ({{ cov.assess.review_list | size }})</strong></summary>
 
 {% if cov.assess.review_list.size > 0 %}
 <ul class="contribution-list" style="font-size:0.85em;">
 {% for m in cov.assess.review_list %}
 {% assign pg = site.pages | where: "title", m | first %}
-  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ m }}</a>{% else %}{{ m }}{% endif %}</li>
+  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ m | escape }}</a>{% else %}{{ m | escape }}{% endif %}</li>
 {% endfor %}
 </ul>
 {% else %}
 <p>Nothing to review — all assessments are complete. 🎉</p>
 {% endif %}
+</details>
 
-### Documentation pages to create ({{ cov.doc.todo_list | size }})
+<h3 id="method-documentation-pages">Method documentation pages</h3>
+{% if include.group %}<p>See the Contributing section on <a href="{{ site.baseurl }}/contributing/#document-method">documentation</a>.</p>{% endif %}
+
+<details class="contribution-section" id="method-documentation-to-create">
+<summary><strong>To create ({{ cov.doc.todo_list | size }})</strong></summary>
 
 {% if cov.doc.todo_list.size > 0 %}
 <ul class="contribution-list" style="font-size:0.85em;">
 {% for h in cov.doc.todo_list %}
 {% assign pg = site.pages | where: "title", h.method | first %}
-  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method }}</a>{% else %}{{ h.method }}{% endif %}</li>
+  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method | escape }}</a>{% else %}{{ h.method | escape }}{% endif %}</li>
 {% endfor %}
 </ul>
 {% else %}
 <p>No missing pages. 🎉</p>
 {% endif %}
+</details>
 
-### Documentation pages to review ({{ cov.doc.review_list | size }})
+<details class="contribution-section" id="method-documentation-to-review">
+<summary><strong>To review ({{ cov.doc.review_list | size }})</strong></summary>
 
 {% if cov.doc.review_list.size > 0 %}
 <ul class="contribution-list" style="font-size:0.85em;">
 {% for h in cov.doc.review_list %}
 {% assign pg = site.pages | where: "title", h.method | first %}
-  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method }}</a>{% else %}{{ h.method }}{% endif %}</li>
+  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method | escape }}</a>{% else %}{{ h.method | escape }}{% endif %}</li>
 {% endfor %}
 </ul>
 {% else %}
 <p>Nothing to review. 🎉</p>
 {% endif %}
+</details>
+
+<details class="contribution-section" id="method-documentation-planned">
+<summary><strong>Planned ({{ cov.doc.planned_list | size }})</strong></summary>
 
 {% if cov.doc.planned_list.size > 0 %}
-### Planned documentation pages ({{ cov.doc.planned_list | size }})
-
 <ul class="contribution-list" style="font-size:0.85em;">
 {% for h in cov.doc.planned_list %}
 {% assign pg = site.pages | where: "title", h.method | first %}
-  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method }}</a>{% else %}{{ h.method }}{% endif %} ({{ h.status }})</li>
+  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ h.method | escape }}</a>{% else %}{{ h.method | escape }}{% endif %} ({{ h.status | escape }})</li>
 {% endfor %}
 </ul>
+{% else %}
+<p>No planned pages.</p>
+{% endif %}
+</details>
+{% endif %}
+
+{% if include.group == nil or include.group == "practices" %}
+<h3 id="good-practices-pages">Good practices pages</h3>
+{% if include.group %}<p>See the Contributing section on <a href="{{ site.baseurl }}/contributing/#practices-examples">good practices</a>.</p>{% endif %}
+
+<details class="contribution-section" id="good-practices-to-create">
+<summary><strong>To create ({{ cov.gp.todo_list | size }})</strong></summary>
+{% if cov.gp.todo_list.size > 0 %}
+<ul class="contribution-list" style="font-size:0.85em;">
+{% for name in cov.gp.todo_list %}
+  <li>{{ name | escape }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No missing pages. 🎉</p>
+{% endif %}
+</details>
+
+<details class="contribution-section" id="good-practices-to-review">
+<summary><strong>To review ({{ cov.gp.review_list | size }})</strong></summary>
+{% if cov.gp.review_list.size > 0 %}
+<ul class="contribution-list" style="font-size:0.85em;">
+{% assign practice_pages = site.pages | where: "layout", "baserefs" %}
+{% for name in cov.gp.review_list %}
+{% assign pg = practice_pages | where: "practice_status_key", name | first %}
+{% unless pg %}{% assign pg = practice_pages | where: "title", name | first %}{% endunless %}
+  <li>{% if pg %}<a href="{{ pg.url | relative_url }}">{{ name | escape }}</a>{% else %}{{ name | escape }}{% endif %}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Nothing to review. 🎉</p>
+{% endif %}
+</details>
+
+<details class="contribution-section" id="good-practices-planned">
+<summary><strong>Planned ({{ cov.gp.planned_list | size }})</strong></summary>
+{% if cov.gp.planned_list.size > 0 %}
+<ul class="contribution-list" style="font-size:0.85em;">
+{% for name in cov.gp.planned_list %}
+  <li>{{ name | escape }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No planned pages.</p>
+{% endif %}
+</details>
 {% endif %}

@@ -1,0 +1,9 @@
+<ul class="nav-list">
+  {% for item in include.items %}
+  {% if item.sidebar != false %}
+  <li class="nav-list-item">
+    <a class="nav-list-link" href="{{ '/contributing/' | relative_url }}#{{ item.anchor }}">{{ item.title | escape }}</a>
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>

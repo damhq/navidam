@@ -1,16 +1,16 @@
 Good practices panel							Examples		
 Page name	Author	Status	Reviewer	Remarks			Page name	Author	Status
-Causal graphs	Joaquim Estopinan	To review	Miriam				STOC & synthetic controls	Joaquim Estopinan	Online
-Causal paradigms		No					BFAST	Christina (WR)	Invited
-Mediators & moderators	Diana Bowler	Invited							
-Review articles		No		Schrodt et al. 2025 & other review articles, eg: Siegel et al. 2025, Correia et al, Laubach et al. 2021					
-Sensitivity analyses & method comparison		No							
+A primer on causal graphs	Joaquim Estopinan	To review	Miriam Beck				STOC & synthetic controls	Joaquim Estopinan	Online
+Causal paradigms		To do					BFAST	Christina (WR)	Invited
+Mediators & moderators	Diana Bowler	Invited					LandTrendR	Manu (VITO)	Invited
+Review articles		To do		Schrodt et al. 2025 & other review articles, eg: Siegel et al. 2025, Correia et al 2026, Laubach et al. 2021					
+Sensitivity analyses & method comparison		To do							
 Colinear inputs	Luca Santini	To review	Joaquim Estopinan						
-Internal/External Validity		No		Reference to Correia et al., Best practices for					
-Intro on diversity metrics for detection?		No		Santini et al. 2017					
-Definitions of Detection & Attribution		No							
-Gaps & biases in biodiversity as missing data?	Diana Bowler	Assigned		Bowler et al. 2025					
-Best practices for causal inference	Joaquim Estopinan	To review		Matches Box 1 from NaviDAM companion article					
-Variable transformations		No							
-NaviDAM usage diagram	Joaquim	Reviewed		Matches Fig. 2 NaviDAM companion article					
-D&A reporting protocol		No		Dee et al. (2026)
+Internal/External Validity		To do		Reference to Correia et al. 2026					
+Diversity metrics for detection		To do		Santini et al. 2017					
+Definitions of Detection & Attribution		To do							
+Gaps & biases in biodiversity as missing data?	Diana Bowler	Invited		Bowler et al. 2025					
+Beyond method selection	Joaquim Estopinan	To review		Matches Box 1 from NaviDAM companion article					
+Variable transformations		To do							
+NaviDAM usage diagram	Joaquim	To review		Matches Fig. 2 NaviDAM companion article					
+D&A reporting protocol		To do		Dee et al. (2026)					

@@ -1,9 +1,12 @@
 ---
 layout: baserefs
 title: "Beyond method selection: Good practices for credible inference"
+practice_status_key: "Beyond method selection"
 nav_title: "Beyond method selection"
 parent: "Good practices"
 nav_order: 2
+date: 2026-06-15
+author: Joaquim Estopinan
 categories:
 - practices
 ---

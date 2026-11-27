@@ -17,7 +17,8 @@ All contributions are welcome, and your ideas matter more than perfect formattin
 
 Please follow the [Code of Conduct](https://github.com/damhq/navidam/blob/main/CODE_OF_CONDUCT.md) in all interactions. Be kind, use inclusive language, and assume good intent, especially when discussing methods or assessments where opinions may differ.
 
-## At a glance 💡
+<a id="at-a-glance-"></a>
+## 1. At a glance 💡
 
 | Goal | How |
 |------|-----|
@@ -33,7 +34,8 @@ Please follow the [Code of Conduct](https://github.com/damhq/navidam/blob/main/C
 - Before opening a new issue, please search [existing issues](https://github.com/damhq/navidam/issues) to avoid duplicates and consider joining an ongoing discussion.
 
 <a id="assess-method"></a>
-## 1. Assess a method (new or revision) 📝
+<a id="1-assess-a-method-new-or-revision-"></a>
+## 2. Assess a method (new or revision) 📝
 
 Use the **Method assessment** issue template for both cases. Assessments position [methods](https://damhq.github.io/navidam/methods) against the [criteria](https://damhq.github.io/navidam/criteria).
 
@@ -91,14 +93,31 @@ Anonymous assessors appear as *Anonymous* on the website, and no issue numbers a
 
 <script>
   (() => {
-    if (window.location.hash !== "#assessment-status") return;
-    const details = document.getElementById("assessment-status");
-    if (details instanceof HTMLDetailsElement) details.open = true;
+    function openTarget() {
+      const target = document.getElementById(window.location.hash.slice(1));
+      let opened = false;
+      for (let element = target; element; element = element.parentElement) {
+        if (element instanceof HTMLDetailsElement && !element.open) {
+          element.open = true;
+          opened = true;
+        }
+      }
+      if (opened) requestAnimationFrame(() => target.scrollIntoView());
+    }
+    document.addEventListener("DOMContentLoaded", openTarget);
+    window.addEventListener("hashchange", openTarget);
+    document.addEventListener("click", event => {
+      const link = event.target.closest("a");
+      if (link && link.pathname === window.location.pathname && link.hash === window.location.hash) {
+        openTarget();
+      }
+    });
   })();
 </script>
 
 <a id="document-method"></a>
-## 2. Document a method (new or completion) 📝
+<a id="2-document-a-method-new-or-completion-"></a>
+## 3. Document a method (new or completion) 📝
 
 Use the **Method documentation** issue template for both cases. Documentation fills the [methods](https://damhq.github.io/navidam/methods) pages (description, references, implementation).
 
@@ -114,12 +133,13 @@ Use the **Method documentation** issue template for both cases. Documentation fi
 
 ### What methods need help? 🌱
 
-Good first contributions include completing thin pages, adding references, or documenting a method you know well. If unsure where to start, browse the [methods panel](https://damhq.github.io/navidam/methods) for pages with placeholders and follow sections 1–2 above.
+Good first contributions include completing thin pages, adding references, or documenting a method you know well. If unsure where to start, browse the [methods panel](https://damhq.github.io/navidam/methods) for pages with placeholders and follow sections 2–3 above.
 
 > 📊 The live [Website coverage](https://damhq.github.io/navidam/contributing/#website-coverage) section on the website shows automatically updated coverage numbers and the lists of methods needing assessment review, documentation, or review.
 
 <a id="revise-doc"></a>
-## 3. Revise an existing documentation page 🔍
+<a id="3-revise-an-existing-documentation-page-"></a>
+## 4. Revise an existing documentation page 🔍
 
 Revisions of existing [documentation pages](https://damhq.github.io/navidam/methods) are made via pull requests, not issues. Even small fixes (typos, broken links, clearer wording) are welcome — there is no minimum size for a useful contribution. ✨
 
@@ -135,10 +155,11 @@ From the website:
 - If the work is still in progress, open a draft pull request to get early feedback.
 - Be responsive to reviewer comments — discussion is part of the process.
 
-For assessment corrections, use the **Method assessment** issue template instead (see section [1.](#assess-method)).
+For assessment corrections, use the **Method assessment** issue template instead (see section [2.](#assess-method)).
 
 <a id="new-method"></a>
-## 4. Add a brand-new method from scratch ✨
+<a id="4-add-a-brand-new-method-from-scratch-"></a>
+## 5. Add a brand-new method from scratch ✨
 
 Fully positioning a new method requires two steps, in order:
 
@@ -148,7 +169,8 @@ Fully positioning a new method requires two steps, in order:
 Assessment first ensures the method becomes filterable; documentation then provides description, references, and implementation details.
 
 <a id="practices-examples"></a>
-## 5. Good practices and Examples pages 🔍
+<a id="5-good-practices-and-examples-pages-"></a>
+## 6. Good practices and Examples pages 🔍
 
 Revisions of [Good practices](https://damhq.github.io/navidam/practices) and [Examples](https://damhq.github.io/navidam/examples) pages follow the same process as [method documentation pages](#revise-doc):
 
@@ -160,7 +182,8 @@ New pages are added the same way: create a `.md` file under `contents/practices/
 
 💡 For new pages, look at an existing page in the same panel as a template (front-matter + section structure), keep filenames in lower-case with hyphens, and link to related [criteria](https://damhq.github.io/navidam/criteria) or [methods](https://damhq.github.io/navidam/methods) where relevant.
 
-## Roles and promotions
+<a id="roles-and-promotions"></a>
+## 7. Roles and promotions
 
 NaviDAM is community-built, and regular contributors are invited to take on more responsibility. Roles are granted **by invitation**, never automatically, so that scientific quality and repository security stay under control.
 
@@ -179,15 +202,18 @@ NaviDAM is community-built, and regular contributors are invited to take on more
 - Roles can be paused or stepped down after about 12 months of inactivity, or on request. Past contributions stay credited.
 - Everyone, whatever the role, follows the [Code of Conduct](https://github.com/damhq/navidam/blob/main/CODE_OF_CONDUCT.md).
 
-## Recognition 🙌
+<a id="recognition-"></a>
+## 8. Recognition 🙌
 
 Contributors are credited as page authors on the pages they create or substantially complete, and every issue and pull request is part of the public record. If you contributed and are not credited, please let us know in the relevant thread.
 
-## Licensing 📄
+<a id="licensing-"></a>
+## 9. Licensing 📄
 
 By contributing, you agree that your contributions will be shared under the repository's licenses: code under GPLv3+, documentation and scientific text under CC BY 4.0. See [`LICENSE`](https://github.com/damhq/navidam/blob/main/LICENSE) for details.
 
-## Questions? 💬
+<a id="questions-"></a>
+## 10. Questions? 💬
 
 - Open a [blank issue](https://github.com/damhq/navidam/issues/new/choose) for questions, bug reports, or suggestions about the site itself.
 - For direct contact, see the [About page](https://damhq.github.io/navidam/about).
